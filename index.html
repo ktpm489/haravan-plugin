@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="./js/include.js"></script>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
@@ -83,7 +84,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <h2>Popup Form</h2>
 <p>Click on the button at the bottom of this page to open the login form.</p>
 <p>Note that the button and the form is fixed - they will always be positioned to the bottom of the browser window.</p>
-
+<div w3-include-html="result.html"></div>
 <button class="open-button" onclick="openForm()">Scan Skin AI</button>
 
 <div class="form-popup" id="myForm">
@@ -109,6 +110,9 @@ function openForm() {
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
+</script>
+<script>
+  includeHTML();
 </script>
 
 </body>
