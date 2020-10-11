@@ -3,21 +3,16 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="./js/skin.js"></script>
+<script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
 <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
+  <p>Hello 123</p>
+  <div id="c-placeholder"></div>
 <button class="open-button" onclick="openForm()">Scan Skin AI</button>
 
 <div class="form-popup" id="myForm">
   <form action="/" class="form-container">
-    <!-- <h1>Login</h1>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required> -->
-
     <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" id="imageShow"> 
     <input type="file" id="inputImage"> 
     <button type="submit" class="btn">Upload</button>
@@ -49,6 +44,12 @@ function closeForm() {
     console.log("Error: " + error);
   });
 </script>
+
+<script>
+  $(function(){
+    $("#c-placeholder").load("result.html");
+  });
+  </script>
 
 </body>
 </html>
