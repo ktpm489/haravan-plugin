@@ -1,6 +1,8 @@
 function includeChooseFileListen() {
 var fileToRead = document.getElementById("inputImage");
 fileToRead.addEventListener("change", function(event) {
+    document.getElementById("subform").style.display = "block";
+    document.getElementById("cameraForm").style.display = "none";
     var files = fileToRead.files;
     if (files.length) {
         console.log("Filename: " + files[0].name);
@@ -15,4 +17,9 @@ fileToRead.addEventListener("change", function(event) {
     }
 
 }, false);
+}
+
+function dislayCamera() {
+    document.getElementById("subform").style.display = "none";
+    document.getElementById("cameraForm").style.display = "block";
 }
