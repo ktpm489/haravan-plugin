@@ -10,7 +10,7 @@ var localstream = null;
 function includeChooseFileListen() {
 var fileToRead = document.getElementById("inputImage");
 fileToRead.addEventListener("change", function(event) {
-    document.getElementById("subform").style.display = "block";
+    document.getElementById("subform").style.display = "flex";
     document.getElementById("cameraForm").style.display = "none";
     var files = fileToRead.files;
     if (files.length) {
@@ -97,12 +97,12 @@ function dislayCamera() {
         var data = canvas.toDataURL('image/png');
         console.log('data',data)
         photo.setAttribute('src', data);
-        document.getElementById("subform").style.display = "block";
+        document.getElementById("subform").style.display = "flex";
         document.getElementById("cameraForm").style.display = "none";
        
       } else {
         clearphoto();
-        document.getElementById("subform").style.display = "block";
+        document.getElementById("subform").style.display = "flex";
         document.getElementById("cameraForm").style.display = "none";
       }
       setTimeout(()=> {
