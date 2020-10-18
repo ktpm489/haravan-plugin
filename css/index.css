@@ -33,8 +33,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
 }
 
 /* Add styles to the form container */
@@ -44,8 +43,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   background-color: white;
   display: flex;
   flex-direction: column;
-  width: 400px;
-  height: 400px;
+  /* width: 400px; */
+  /* height: 400px; */
   align-items: center;
 }
 

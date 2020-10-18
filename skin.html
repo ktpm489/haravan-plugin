@@ -22,9 +22,6 @@
       </div>
       <div><button id="startbutton">Take photo</button></div>
       <canvas id="canvas"></canvas>
-      <div class="output">
-        <img id="photo" alt="The screen capture will appear in this box.">
-      </div>
     </div>
     <form action="/" class="form-container" id='subform'>
       <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" id="imageShow">
@@ -43,7 +40,7 @@
     }
   </script>
 
-  <script>
+  <!-- <script>
     /* JS comes here */
     (function () {
 
@@ -107,7 +104,7 @@
         context.fillRect(0, 0, canvas.width, canvas.height);
 
         var data = canvas.toDataURL('image/png');
-        photo.setAttribute('src', data);
+        // photo.setAttribute('src', data);
       }
 
       function takepicture() {
@@ -139,13 +136,13 @@
         tracks[0].stop();
 
         // Or stop all like so:
-        tracks.forEach(track => track.stop())
+        // tracks.forEach(track => track.stop())
       }
 
 
       window.addEventListener('load', startup, false);
     })();
-  </script>
+  </script> -->
   <script>
     includeChooseFileListen();
   </script>
