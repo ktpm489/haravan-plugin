@@ -12,7 +12,7 @@
   <button class="open-button" onclick="openForm()">Scan Skin AI</button>
 
   <div class="form-popup" id="myForm">
-    <div class='picture-container'>
+    <div class='picture-container' id="pictuer-id">
       <input type="file" id="inputImage">
       <button type="button" class="btn cancel" onclick="dislayCamera()">Take picture</button>
     </div>
@@ -25,18 +25,29 @@
     </div>
     <form action="/" class="form-container" id='subform'>
       <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" id="imageShow">
-      <button type="submit" class="btn upload">Upload</button>
+      <!-- <button type="submit" class="btn upload">Upload</button> -->
+      <button type="button" class="btn upload" onclick="openResult()">Upload</button>
       <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
     </form>
+    <div id="c-placeholder" class="c-placeholder-container"></div>
   </div>
+  
 
   <script>
     function openForm() {
       document.getElementById("myForm").style.display = "block";
+      // document.getElementById("c-placeholder").style.display = "block";
     }
 
     function closeForm() {
       document.getElementById("myForm").style.display = "none";
+      // document.getElementById("c-placeholder").style.display = "block";
+    }
+
+    function openResult () {
+      document.getElementById("subform").style.display = "none";
+      document.getElementById("pictuer-id").style.display = "none";
+      document.getElementById("c-placeholder").style.display = "block";
     }
   </script>
 
@@ -161,7 +172,7 @@
 
   <script>
     $(function () {
-      // $("#c-placeholder").load("result.html");
+      $("#c-placeholder").load("result.html");
     });
   </script>
 

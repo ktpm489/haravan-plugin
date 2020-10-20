@@ -99,11 +99,13 @@ function dislayCamera() {
         photo.setAttribute('src', data);
         document.getElementById("subform").style.display = "flex";
         document.getElementById("cameraForm").style.display = "none";
+        document.getElementById("c-placeholder").style.display = "none";
        
       } else {
         clearphoto();
         document.getElementById("subform").style.display = "flex";
         document.getElementById("cameraForm").style.display = "none";
+        document.getElementById("c-placeholder").style.display = "none";
       }
       setTimeout(()=> {
         videoOff();

@@ -4,6 +4,11 @@
 
   <p>Click the 'Push' button to add the value to the array.</p>  
   <p>Click the 'Pop' button to remove the first element of the array.</p>
+  <label for="myCheck">Checkbox:</label> 
+<input type="checkbox" id="myCheck" onclick="myFunction()">
+
+<p id="text" style="display:none">Checkbox is CHECKED!</p>
+
   <input id='input' type='text' placeholder="Type Value" />
   <button onclick="pushIt()">Push</button>
   
@@ -53,4 +58,15 @@ function pushIt() {
   outputIt();
 }
 </script>
+<script>
+  function myFunction() {
+    var checkBox = document.getElementById("myCheck");
+    var text = document.getElementById("text");
+    if (checkBox.checked == true){
+      text.style.display = "block";
+    } else {
+       text.style.display = "none";
+    }
+  }
+  </script>
 </html>
