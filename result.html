@@ -1,82 +1,96 @@
 <html>
+
 <body>
   <h1>Local Storage JSON Array Example</h1>
 
-  <p>Click the 'Push' button to add the value to the array.</p>  
+  <p>Click the 'Push' button to add the value to the array.</p>
   <p>Click the 'Pop' button to remove the first element of the array.</p>
-  <label for="myCheck">Checkbox:</label> 
-<input type="checkbox" id="myCheck" onclick="myFunction()">
+  <label for="myCheck">Checkbox:</label>
+  <input type="checkbox" id="myCheck" onclick="myFunction()">
 
-<p id="text" style="display:none">Checkbox is CHECKED!</p>
+  <p id="text" style="display:none">Checkbox is CHECKED!</p>
 
   <input id='input' type='text' placeholder="Type Value" />
   <button onclick="pushIt()">Push</button>
-  
+
   <button onclick="popIt()">Pop</button>
   <p id="demo"></p>
 </body>
 <script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/gh/ktpm489/admin-demo/config.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ktpm489/admin-demo/config2.js"></script>
 <script src="./js/config.js"></script>
 <script>
   console.log("EEE")
-  try{
-    console.log('data1', getConfig())
-  }catch(e){
-    console.log('e',e)
+  // try{
+  //   console.log('data1', MrFrontendModule.getTitle())
+  // }catch(e){
+  //   console.log('e',e)
+  // }
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = process;
+  xhr.open("GET", "https://cdn.jsdelivr.net/gh/ktpm489/admin-demo/config3.js", true);
+  xhr.send();
+
+  function process() {
+    if (xhr.readyState == 4) {
+      // var resp = JSON.parse(xhr.responseText);
+
+      // resp now has the text and you can process it.
+      console.log(JSON.parse(xhr.responseText));
+    }
   }
-  
 
-    var fruits =
-{ 
-  queue: 
-  [
-    {id: 0, name:"Banana"},
-    {id: 1, name:"Orange"},
-    {id: 2, name:"Apple"},
-    {id: 3, name:"Mango"}
-  ]
-};
 
-localStorage.setItem('fruits', JSON.stringify(fruits));
-
-outputIt();
-
-function outputIt() {
-  var restoredFruits = JSON.parse(localStorage.getItem('fruits'));
-  var outputs = "";
-  for(var i = 0; i < restoredFruits.queue.length; i++)
+  var fruits =
   {
-  	outputs += '<div id="'+restoredFruits.queue[i].id + '">' + restoredFruits.queue[i].id+':'+restoredFruits.queue[i].name + '</div>';
+    queue:
+      [
+        { id: 0, name: "Banana" },
+        { id: 1, name: "Orange" },
+        { id: 2, name: "Apple" },
+        { id: 3, name: "Mango" }
+      ]
+  };
+
+  localStorage.setItem('fruits', JSON.stringify(fruits));
+
+  outputIt();
+
+  function outputIt() {
+    var restoredFruits = JSON.parse(localStorage.getItem('fruits'));
+    var outputs = "";
+    for (var i = 0; i < restoredFruits.queue.length; i++) {
+      outputs += '<div id="' + restoredFruits.queue[i].id + '">' + restoredFruits.queue[i].id + ':' + restoredFruits.queue[i].name + '</div>';
+    }
+    document.getElementById("demo").innerHTML = outputs;
   }
-  document.getElementById("demo").innerHTML= outputs;
-}
-function popIt() {
-  var restoredFruits  = JSON.parse(localStorage.getItem('fruits'));  
-  restoredFruits.queue.shift();
-  localStorage.setItem('fruits', JSON.stringify(restoredFruits));
-  outputIt();
-}
-function pushIt() {
-  var restoredFruits = JSON.parse(localStorage.getItem('fruits'));
-  
-  restoredFruits.queue.push({
-    id:  Math.floor(Math.random() * (100 - 1 + 1)) + 1,
-    name: $('input').val()
-  });
-  localStorage.setItem('fruits', JSON.stringify(restoredFruits));
-  outputIt();
-}
+  function popIt() {
+    var restoredFruits = JSON.parse(localStorage.getItem('fruits'));
+    restoredFruits.queue.shift();
+    localStorage.setItem('fruits', JSON.stringify(restoredFruits));
+    outputIt();
+  }
+  function pushIt() {
+    var restoredFruits = JSON.parse(localStorage.getItem('fruits'));
+
+    restoredFruits.queue.push({
+      id: Math.floor(Math.random() * (100 - 1 + 1)) + 1,
+      name: $('input').val()
+    });
+    localStorage.setItem('fruits', JSON.stringify(restoredFruits));
+    outputIt();
+  }
 </script>
 <script>
   function myFunction() {
     var checkBox = document.getElementById("myCheck");
     var text = document.getElementById("text");
-    if (checkBox.checked == true){
+    if (checkBox.checked == true) {
       text.style.display = "block";
     } else {
-       text.style.display = "none";
+      text.style.display = "none";
     }
   }
-  </script>
+</script>
+
 </html>
