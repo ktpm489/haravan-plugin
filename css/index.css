@@ -1,5 +1,10 @@
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
@@ -22,20 +27,21 @@ body {font-family: Arial, Helvetica, sans-serif;}
   /* bottom: 0;
   right: 15px; */
   position: fixed;
-  top :25%;
-    left: 50%;
-    transform: translate(-50%, 0);
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, 0);
   border: 3px solid #f1f1f1;
   z-index: 9;
   max-height: 500px;
   overflow: scroll;
 }
+
 .picture-container {
   display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
 /* Add styles to the form container */
@@ -51,7 +57,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
+.form-container input[type=text],
+.form-container input[type=password] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -60,7 +67,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+.form-container input[type=text]:focus,
+.form-container input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -73,7 +81,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   border: none;
   cursor: pointer;
   width: 100%;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   opacity: 0.8;
 }
 
@@ -87,14 +95,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+.form-container .btn:hover,
+.open-button:hover {
   opacity: 1;
 }
 
 
 #imageShow {
-    width: 300px;
-    height: 300px;
+  width: 300px;
+  height: 300px;
 }
 
 
@@ -145,9 +154,49 @@ body {font-family: Arial, Helvetica, sans-serif;}
   font-family: Arial;
   text-align: center;
   display: none;
- 
+
 }
 
 .c-placeholder-container {
   display: none;
+}
+
+
+/*** button popup **/
+.close {
+  /* position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+  */
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
 }

@@ -1,8 +1,8 @@
 <html>
 
 <body>
+  <a href="#" class="close" onclick="closeFunction()"></a>
   <h1>Local Storage JSON Array Example</h1>
-
   <p>Click the 'Push' button to add the value to the array.</p>
   <p>Click the 'Pop' button to remove the first element of the array.</p>
   <label for="myCheck">Checkbox:</label>
@@ -90,6 +90,14 @@
     } else {
       text.style.display = "none";
     }
+  }
+</script>
+<script>
+  function closeFunction() {
+   document.getElementById("myForm").style.display = "none";
+    document.getElementById("subform").style.display = "block";
+    document.getElementById("pictuer-id").style.display = "flex";
+    document.getElementById("c-placeholder").style.display = "none";
   }
 </script>
 
