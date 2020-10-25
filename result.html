@@ -12,15 +12,17 @@
 
   <input id='input' type='text' placeholder="Type Value" />
   <button onclick="pushIt()">Push</button>
-
   <button onclick="popIt()">Pop</button>
-  <p id="demo"></p>
+  <p id="generalResult"></p>
+  <p id="specialResult"></p>
+  <p id="generalConclusion"></p>
+  <p id="specialConclusion"></p>
 </body>
 <script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ktpm489/admin-demo/config2.js"></script>
-<script src="./js/config.js"></script>
+<script type="text/javascript" src="./js/config.js"></script>
+<script type="text/javascript" src="./js/renderData.js"></script>
 <script>
-  console.log("EEE")
   // try{
   //   console.log('data1', MrFrontendModule.getTitle())
   // }catch(e){
@@ -39,6 +41,26 @@
       console.log(JSON.parse(xhr.responseText));
     }
   }
+
+  // Request getData from AI Skin
+  var xhrSkin = new XMLHttpRequest();
+  xhrSkin.onreadystatechange = processSkin;
+  xhrSkin.open("GET", "https://ancient-bastion-76504.herokuapp.com/api/userskin/5f47b3338f1bbb0aebd0d47d", true);
+  xhrSkin.send();
+
+  function processSkin() {
+    if (xhrSkin.readyState == 4) {
+      let res = xhrSkin.responseText
+      let dataJSON = JSON.parse(res)
+      if (dataJSON !== null) {
+        renderData(dataJSON.user.facedata.generalResult, 'generalResult')
+        renderData(dataJSON.user.facedata.specialResult, 'specialResult')
+      }
+      
+    }
+  }
+
+
 
 
   var fruits =
