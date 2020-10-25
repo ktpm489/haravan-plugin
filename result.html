@@ -2,22 +2,16 @@
 
 <body>
   <a href="#" class="close" onclick="closeFunction()"></a>
-  <h1>Local Storage JSON Array Example</h1>
-  <p>Click the 'Push' button to add the value to the array.</p>
-  <p>Click the 'Pop' button to remove the first element of the array.</p>
-  <label for="myCheck">Checkbox:</label>
-  <input type="checkbox" id="myCheck" onclick="myFunction()">
-
-  <p id="text" style="display:none">Checkbox is CHECKED!</p>
-
-  <input id='input' type='text' placeholder="Type Value" />
-  <button onclick="pushIt()">Push</button>
-  <button onclick="popIt()">Pop</button>
+  <h1>Kết quả da của bạn</h1>
+  <div class="myimgContainer">
+  <img id="myimgresult"/>
+  <div id="spotContainer"> </div>
+  </div>
   <p id="generalResult"></p>
   <p id="specialResult"></p>
   <p id="generalConclusion"></p>
   <p id="specialConclusion"></p>
-</body>
+
 <script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ktpm489/admin-demo/config2.js"></script>
 <script type="text/javascript" src="./js/config.js"></script>
@@ -55,6 +49,8 @@
       if (dataJSON !== null) {
         renderData(dataJSON.user.facedata.generalResult, 'generalResult')
         renderData(dataJSON.user.facedata.specialResult, 'specialResult')
+        renderImg(dataJSON.user.facedata.image_info.url)
+        processSpecialResult(dataJSON.user.facedata)
       }
       
     }
@@ -63,45 +59,45 @@
 
 
 
-  var fruits =
-  {
-    queue:
-      [
-        { id: 0, name: "Banana" },
-        { id: 1, name: "Orange" },
-        { id: 2, name: "Apple" },
-        { id: 3, name: "Mango" }
-      ]
-  };
+  // var fruits =
+  // {
+  //   queue:
+  //     [
+  //       { id: 0, name: "Banana" },
+  //       { id: 1, name: "Orange" },
+  //       { id: 2, name: "Apple" },
+  //       { id: 3, name: "Mango" }
+  //     ]
+  // };
 
-  localStorage.setItem('fruits', JSON.stringify(fruits));
+  // localStorage.setItem('fruits', JSON.stringify(fruits));
 
-  outputIt();
+  // outputIt();
 
-  function outputIt() {
-    var restoredFruits = JSON.parse(localStorage.getItem('fruits'));
-    var outputs = "";
-    for (var i = 0; i < restoredFruits.queue.length; i++) {
-      outputs += '<div id="' + restoredFruits.queue[i].id + '">' + restoredFruits.queue[i].id + ':' + restoredFruits.queue[i].name + '</div>';
-    }
-    document.getElementById("demo").innerHTML = outputs;
-  }
-  function popIt() {
-    var restoredFruits = JSON.parse(localStorage.getItem('fruits'));
-    restoredFruits.queue.shift();
-    localStorage.setItem('fruits', JSON.stringify(restoredFruits));
-    outputIt();
-  }
-  function pushIt() {
-    var restoredFruits = JSON.parse(localStorage.getItem('fruits'));
+  // function outputIt() {
+  //   var restoredFruits = JSON.parse(localStorage.getItem('fruits'));
+  //   var outputs = "";
+  //   for (var i = 0; i < restoredFruits.queue.length; i++) {
+  //     outputs += '<div id="' + restoredFruits.queue[i].id + '">' + restoredFruits.queue[i].id + ':' + restoredFruits.queue[i].name + '</div>';
+  //   }
+  //   document.getElementById("demo").innerHTML = outputs;
+  // }
+  // function popIt() {
+  //   var restoredFruits = JSON.parse(localStorage.getItem('fruits'));
+  //   restoredFruits.queue.shift();
+  //   localStorage.setItem('fruits', JSON.stringify(restoredFruits));
+  //   outputIt();
+  // }
+  // function pushIt() {
+  //   var restoredFruits = JSON.parse(localStorage.getItem('fruits'));
 
-    restoredFruits.queue.push({
-      id: Math.floor(Math.random() * (100 - 1 + 1)) + 1,
-      name: $('input').val()
-    });
-    localStorage.setItem('fruits', JSON.stringify(restoredFruits));
-    outputIt();
-  }
+  //   restoredFruits.queue.push({
+  //     id: Math.floor(Math.random() * (100 - 1 + 1)) + 1,
+  //     name: $('input').val()
+  //   });
+  //   localStorage.setItem('fruits', JSON.stringify(restoredFruits));
+  //   outputIt();
+  // }
 </script>
 <script>
   function myFunction() {
@@ -115,12 +111,7 @@
   }
 </script>
 <script>
-  function closeFunction() {
-   document.getElementById("myForm").style.display = "none";
-    document.getElementById("subform").style.display = "block";
-    document.getElementById("pictuer-id").style.display = "flex";
-    document.getElementById("c-placeholder").style.display = "none";
-  }
+ 
 </script>
-
+</body> 
 </html>
