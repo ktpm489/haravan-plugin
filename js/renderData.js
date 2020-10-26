@@ -137,6 +137,7 @@ function renderDivItem(itemId, data, taux= 1, color="red") {
   div.style.top = data.top * taux + "px";
   div.style.left = data.left * taux + "px";
   div.style.color = color;
+  div.style.borderColor = color
   div.className = 'box'
   // this.renderer.addClass(div, "box");
   // this.renderer.setStyle(div, "width", data.width * this.taux + "px");

@@ -206,3 +206,13 @@ body {
   border: 1px solid #000;
   position: absolute;
 }
+
+.myimgContainer {
+  position: relative;
+}
+
+.divContainer {
+  position: absolute;
+    top: 0;
+    left: 0;
+}
