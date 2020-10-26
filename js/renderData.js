@@ -105,20 +105,45 @@ function processSpecialResult(dataTransfer) {
   console.log("drawSpotArrDataInput", drawSpotArrDataInput);
   console.log("drawPimpleArrDataInput", drawPimpleArrDataInput);
   console.log("drawAcneArrDataInput", drawAcneArrDataInput);
+  // draw black head
+  drawData(drawBlackHeadArrDataInput, 'blackHeadContainer' )
+  // drawData(drawBlackHeadArrDataInput, 'myimgContainer' )
+  // drawSpotArrDataInput
+  drawData(drawSpotArrDataInput, 'spotContainer' )
+  // drawData(drawSpotArrDataInput, 'myimgContainer' )
+  //drawPimpleArrDataInput
+  drawData(drawPimpleArrDataInput, 'pimpleContainer' )
+  // drawData(drawPimpleArrDataInput, 'myimgContainer' )
+  // drawAcneArrDataInput
+  drawData(drawAcneArrDataInput, 'acneContainer' )
+  // drawData(drawAcneArrDataInput, 'myimgContainer' )
 }
 
-function renderDivItem(itemId, color) {
-  var div = document.createElement("div");
-  div.style.width = "100px";
-  div.style.height = "100px";
-  div.style.background = "red";
-  div.style.color = "white";
-  div.innerHTML = "Hello";
-  this.renderer.addClass(div, "box");
-  this.renderer.setStyle(div, "width", data.width * this.taux + "px");
-  this.renderer.setStyle(div, "height", data.height * this.taux + "px");
-  this.renderer.setStyle(div, "top", data.top * this.taux + "px");
-  this.renderer.setStyle(div, "left", data.left * this.taux + "px");
+function drawData(arr, itemId, taux = 1, color = "red") {
+  console.log('EE222', arr.length > 0)
+   if (arr.length > 0) {
+     console.log('EE')
+     for (var i = 0  ; i < arr.length ; i++) {
+       renderDivItem(itemId, arr[i], taux, color)
+     }
+   }
+}
 
-  document.getElementById("main").appendChild(div);
+function renderDivItem(itemId, data, taux= 1, color="red") {
+  console.log('EE1')
+  var div = document.createElement("div");
+  div.style.width = data.width * taux + "px";
+  div.style.height = data.height * taux + "px";
+  div.style.top = data.top * taux + "px";
+  div.style.left = data.left * taux + "px";
+  div.style.color = color;
+  div.className = 'box'
+  // this.renderer.addClass(div, "box");
+  // this.renderer.setStyle(div, "width", data.width * this.taux + "px");
+  // this.renderer.setStyle(div, "height", data.height * this.taux + "px");
+  // this.renderer.setStyle(div, "top", data.top * this.taux + "px");
+  // this.renderer.setStyle(div, "left", data.left * this.taux + "px");
+  let el = document.getElementById(itemId)
+  console.log('el', el)
+  el.appendChild(div);
 }
