@@ -124,7 +124,6 @@ function takepicture() {
 }
 
 function videoOff() {
-  console.log("EEE");
   // A video's MediaStream object is available through its srcObject attribute
   video = document.getElementById("video");
   const mediaStream = video.srcObject;

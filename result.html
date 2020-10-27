@@ -69,7 +69,7 @@
       let dataJSON = JSON.parse(res)
       if (dataJSON !== null) {
         renderData(dataJSON.user.facedata.generalResult, 'generalResult')
-        renderData(dataJSON.user.facedata.specialResult, 'specialResult')
+        renderData(dataJSON.user.facedata.specialResult, 'specialResult', 'Kết luận từng phần')
         renderImg(dataJSON.user.facedata.image_info.url)
         processSpecialResult(dataJSON.user.facedata)
       }

@@ -1,8 +1,11 @@
-function renderData(itemInput, idParse = "demo") {
+function renderData(itemInput, idParse = "demo", titleDefault = '') {
   var outputs = "";
 
   if (itemInput.title !== undefined) {
     outputs += "<div>" + itemInput.title.vi + "</div>";
+  } else if (titleDefault !== '') {
+    outputs += "<div>" + titleDefault + "</div>";
+    outputs += "<div>" + '\n' + "</div>";
   }
 
   for (var i = 0; i < itemInput.data.length; i++) {
@@ -27,6 +30,7 @@ function renderData(itemInput, idParse = "demo") {
       }
 
       outputs += "<div>" + itemOutput + "</div>";
+      outputs += "<div>" + '------------------------------------------------------------------' + "</div>";
     }
   }
   document.getElementById(idParse).innerHTML = outputs;
