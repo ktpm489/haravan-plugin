@@ -148,3 +148,17 @@ function renderDivItem(itemId, data, taux= 1, color="red") {
   console.log('el', el)
   el.appendChild(div);
 }
+
+
+function myFunction(toogleId, containerId) {
+  console.log(toogleId, containerId)
+  var checkBox = document.getElementById(toogleId);
+  console.log('checkBox',checkBox)
+  var text = document.getElementById(containerId);
+  console.log('text',text)
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}

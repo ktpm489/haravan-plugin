@@ -215,9 +215,18 @@ body {
   position: absolute;
     top: 0;
     left: 0;
+    display: none;
 }
 
 .txt-header {
   text-align: center;
   overflow: scroll;
+}
+
+
+.checkContainer {
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
