@@ -2,7 +2,7 @@
 
 <body>
   <a href="#" class="close" onclick="closeFunction()"></a>
-  <h1 class="txt-header">Kết quả da của bạn</h1>
+  <h1 class="txt-header">Kết quả của bạn</h1>
   <div class="myimgContainer" id="myimgContainer">
   <img id="myimgresult"/>
   <div id="spotContainer" class="divContainer"> </div>
@@ -56,7 +56,7 @@
       console.log(JSON.parse(xhr.responseText));
     }
   }
-
+  
   // Request getData from AI Skin
   var xhrSkin = new XMLHttpRequest();
   xhrSkin.onreadystatechange = processSkin;
