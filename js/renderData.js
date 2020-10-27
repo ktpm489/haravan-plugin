@@ -106,20 +106,20 @@ function processSpecialResult(dataTransfer) {
   console.log("drawPimpleArrDataInput", drawPimpleArrDataInput);
   console.log("drawAcneArrDataInput", drawAcneArrDataInput);
   // draw black head
-  drawData(drawBlackHeadArrDataInput, 'blackHeadContainer' )
+  drawData(drawBlackHeadArrDataInput, 'blackHeadContainer' ,'pink')
   // drawData(drawBlackHeadArrDataInput, 'myimgContainer' )
   // drawSpotArrDataInput
-  drawData(drawSpotArrDataInput, 'spotContainer' )
+  drawData(drawSpotArrDataInput, 'spotContainer','orange' )
   // drawData(drawSpotArrDataInput, 'myimgContainer' )
   //drawPimpleArrDataInput
-  drawData(drawPimpleArrDataInput, 'pimpleContainer' )
+  drawData(drawPimpleArrDataInput, 'pimpleContainer' ,'red' )
   // drawData(drawPimpleArrDataInput, 'myimgContainer' )
   // drawAcneArrDataInput
-  drawData(drawAcneArrDataInput, 'acneContainer' )
+  drawData(drawAcneArrDataInput, 'acneContainer' ,'green')
   // drawData(drawAcneArrDataInput, 'myimgContainer' )
 }
 
-function drawData(arr, itemId, taux = 1, color = "red") {
+function drawData(arr, itemId, color = "red", taux = 1,) {
   console.log('EE222', arr.length > 0)
    if (arr.length > 0) {
      console.log('EE')
