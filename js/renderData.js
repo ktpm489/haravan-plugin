@@ -14,6 +14,7 @@ function renderData(itemInput, idParse = "demo", titleDefault = "") {
     if (itemData !== null) {
       let itemOutput = "";
       if (itemData.title !== undefined) {
+        
         itemOutput += "<div>" + itemData.title.vi + "</div>";
       }
       {
@@ -44,6 +45,7 @@ function renderSpecialData(itemInput, idParse = "demo") {
   // TODO fix here
   console.log("itemInput", itemInput);
   if (itemInput.title !== undefined) {
+   
     outputs += "<div>" + itemInput.title.vi + "</div>";
   }
 
@@ -53,6 +55,8 @@ function renderSpecialData(itemInput, idParse = "demo") {
       let item = tempData[k];
       // console.log("item.data ", item);
       if (item.data !== undefined) {
+        outputs += "<div>" + '-------------' + "</div>";
+        outputs += "<div>" + '\n' + "</div>";
         outputs += '<div>' + item.title.vi+ '</div>';
         for (var i = 0; i < item.data.vi.length; i++) {
           //   outputs += '<div id="' + data[i].id + '">' + data[i].id + ':' + data[i].name + '</div>';
