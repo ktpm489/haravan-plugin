@@ -27,7 +27,7 @@
     <form action="/" class="form-container" id='subform'>
       <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" id="imageShow">
       <!-- <button type="submit" class="btn upload">Upload</button> -->
-      <button type="button" class="btn upload" onclick="openResult()">Upload</button>
+      <button type="button" class="btn upload" onclick="openResult()" id="uploadbtn">Upload</button>
       <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
     </form>
     <div id="c-placeholder" class="c-placeholder-container"></div>
@@ -46,10 +46,10 @@
     }
 
     function openResult () {
+      document.getElementById("uploadbtn").innerHTML = "Loading...";
       uploadImage()
-      document.getElementById("subform").style.display = "none";
-      document.getElementById("pictuer-id").style.display = "none";
-      document.getElementById("c-placeholder").style.display = "block";
+      // 
+      
     }
   </script>
   <script>

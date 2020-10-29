@@ -206,7 +206,6 @@ function myFunction(toogleId, containerId) {
 function uploadImage() {
   var img = document.getElementById("imageShow");
   if (img.src !== null) {
-    // var jdata = new Object();
     let jdata = {
       email: "ktpm489@gmail.com",
       image_base64:
@@ -230,6 +229,7 @@ function uploadImage() {
         console.log(this.responseText);
         let dataJSON = JSON.parse(this.responseText);
         renderSkinData(dataJSON);
+        openRenderPage()
       }
     };
   }
@@ -245,4 +245,11 @@ function renderSkinData(dataJSON) {
   );
   renderImg(dataJSON.data.facedata.image_info.url)
   processSpecialResult(dataJSON.data.facedata)
+}
+
+function openRenderPage() {
+      document.getElementById("subform").style.display = "none";
+      document.getElementById("pictuer-id").style.display = "none";
+      document.getElementById("c-placeholder").style.display = "block";
+      document.getElementById("uploadbtn").innerHTML = "Upload";
 }
