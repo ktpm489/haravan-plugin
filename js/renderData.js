@@ -232,11 +232,16 @@ function processImage (inputData) {
 
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText);
-        let dataJSON = JSON.parse(this.responseText);
-        renderSkinData(dataJSON);
-        openRenderPage()
-      }
+        if (this.status === 200) {
+          console.log(this.responseText);
+          let dataJSON = JSON.parse(this.responseText);
+          renderSkinData(dataJSON);
+          openRenderPage()
+        } else {
+          errorShow()
+        }
+       
+      } 
     };
   }
 }

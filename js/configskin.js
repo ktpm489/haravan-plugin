@@ -5,9 +5,14 @@ function getConfigSkinAI (functionProcess) {
     xhr.send();
     function process() {
         if (xhr.readyState == 4) {
-            console.log(JSON.parse(xhr.responseText));
+            // console.log(JSON.parse(xhr.responseText));
             result = JSON.parse(xhr.responseText)
             functionProcess && functionProcess(result)
-        }
+        } 
     }
+}
+
+
+function errorShow (text= 'Vui lòng thử lại') {
+    alert(text);
 }
