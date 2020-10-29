@@ -43,7 +43,7 @@ function renderData(itemInput, idParse = "demo", titleDefault = "") {
 function renderSpecialData(itemInput, idParse = "demo") {
   var outputs = "";
   // TODO fix here
-  console.log("itemInput", itemInput);
+  // console.log("itemInput", itemInput);
   if (itemInput.title !== undefined) {
    
     outputs += "<div>" + itemInput.title.vi + "</div>";
@@ -142,10 +142,10 @@ function processSpecialResult(dataTransfer) {
       }
     }
   }
-  console.log("drawBlackHeadArrDataInput", drawBlackHeadArrDataInput);
-  console.log("drawSpotArrDataInput", drawSpotArrDataInput);
-  console.log("drawPimpleArrDataInput", drawPimpleArrDataInput);
-  console.log("drawAcneArrDataInput", drawAcneArrDataInput);
+  // console.log("drawBlackHeadArrDataInput", drawBlackHeadArrDataInput);
+  // console.log("drawSpotArrDataInput", drawSpotArrDataInput);
+  // console.log("drawPimpleArrDataInput", drawPimpleArrDataInput);
+  // console.log("drawAcneArrDataInput", drawAcneArrDataInput);
   // draw black head
   drawData(drawBlackHeadArrDataInput, "blackHeadContainer", "pink");
   // drawData(drawBlackHeadArrDataInput, 'myimgContainer' )
@@ -161,9 +161,9 @@ function processSpecialResult(dataTransfer) {
 }
 
 function drawData(arr, itemId, color = "red", taux = 1) {
-  console.log("EE222", arr.length > 0);
+  // console.log("EE222", arr.length > 0);
   if (arr.length > 0) {
-    console.log("EE");
+    // console.log("EE");
     for (var i = 0; i < arr.length; i++) {
       renderDivItem(itemId, arr[i], taux, color);
     }
@@ -171,7 +171,7 @@ function drawData(arr, itemId, color = "red", taux = 1) {
 }
 
 function renderDivItem(itemId, data, taux = 1, color = "red") {
-  console.log("EE1");
+  // console.log("EE1");
   var div = document.createElement("div");
   div.style.width = data.width * taux + "px";
   div.style.height = data.height * taux + "px";
@@ -186,16 +186,16 @@ function renderDivItem(itemId, data, taux = 1, color = "red") {
   // this.renderer.setStyle(div, "top", data.top * this.taux + "px");
   // this.renderer.setStyle(div, "left", data.left * this.taux + "px");
   let el = document.getElementById(itemId);
-  console.log("el", el);
+  // console.log("el", el);
   el.appendChild(div);
 }
 
 function myFunction(toogleId, containerId) {
-  console.log(toogleId, containerId);
+  // console.log(toogleId, containerId);
   var checkBox = document.getElementById(toogleId);
-  console.log("checkBox", checkBox);
+  // console.log("checkBox", checkBox);
   var text = document.getElementById(containerId);
-  console.log("text", text);
+  // console.log("text", text);
   if (checkBox.checked == true) {
     text.style.display = "block";
   } else {
@@ -236,13 +236,13 @@ function uploadImage() {
 }
 
 function renderSkinData(dataJSON) {
-  // renderData(dataJSON.data.facedata.generalResult, 'generalResult')
-  // renderData(dataJSON.data.facedata.specialResult, 'specialResult', 'Kết quả từng phần')
-  // renderData(dataJSON.data.facedata.generalConclusion, 'generalConclusion')
+  renderData(dataJSON.data.facedata.generalResult, 'generalResult')
+  renderData(dataJSON.data.facedata.specialResult, 'specialResult', 'Kết quả từng phần')
+  renderData(dataJSON.data.facedata.generalConclusion, 'generalConclusion')
   renderSpecialData(
     dataJSON.data.facedata.specialConclusion,
     "specialConclusion"
   );
-  // renderImg(dataJSON.data.facedata.image_info.url)
-  // processSpecialResult(dataJSON.data.facedata)
+  renderImg(dataJSON.data.facedata.image_info.url)
+  processSpecialResult(dataJSON.data.facedata)
 }

@@ -160,6 +160,7 @@ body {
 .c-placeholder-container {
   padding: 10px;
   display: none;
+  max-width: 520px;
 }
 
 
@@ -220,7 +221,7 @@ body {
 
 .txt-header {
   text-align: center;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 
