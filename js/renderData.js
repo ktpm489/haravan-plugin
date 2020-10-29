@@ -52,38 +52,57 @@ function renderSpecialData(itemInput, idParse = "demo") {
   for (let j = 0; j < itemInput.data.length; j++) {
     let tempData = itemInput.data[j];
     for (let k = 0; k < tempData.length; k++) {
-      let item = tempData[k];
-      // console.log("item.data ", item);
-      if (item.data !== undefined) {
-        outputs += "<div>" + '-------------' + "</div>";
-        outputs += "<div>" + '\n' + "</div>";
-        outputs += '<div>' + item.title.vi+ '</div>';
-        for (var i = 0; i < item.data.vi.length; i++) {
-          //   outputs += '<div id="' + data[i].id + '">' + data[i].id + ':' + data[i].name + '</div>';
-          let itemData = item.data.vi[i];
-          console.log("itemData ", itemData, itemData !== null);
-          outputs += '<div>' + itemData + '</div>'
-          if (itemData !== null) {
-            let itemOutput = "";
-            if (itemData.title !== undefined) {
-              itemOutput += "<div>" + item.title.vi + "</div>";
-            }
-            {
-              itemData.data !== undefined
-                ? itemData.data.forEach((item, i) => {
-                    itemOutput += "<div>" + item.valueVI + "</div>";
-                  })
-                : null;
-            }
-            {
-              itemData.valueEN !== undefined && itemData.valueVI !== undefined
-                ? (itemOutput += "<div>" + itemData.valueVI + "</div>")
-                : null;
-            }
-
-            outputs += "<div>" + itemOutput + "</div>";
+      let itemData = tempData[k];
+      console.log("item.data ", itemData.data);
+      if (itemData.data !== undefined) {
+        // outputs += "<div>" + '-------------' + "</div>";
+        // outputs += "<div>" + '\n' + "</div>";
+        // outputs += '<div>' + item.title.vi+ '</div>';
+        if (itemData !== null) {
+          outputs += "<div>" + '-------------' + "</div>";
+          let itemOutput = "";
+          if (itemData.title !== undefined) {
+            itemOutput += "<div>" + itemData.title.vi + "</div>";
           }
+          {
+            itemData.data !== undefined
+              ? itemData.data.vi.forEach((item, i) => {
+                itemOutput += "<div>" + item + "</div>";
+              })
+              : null;
+          }
+          {
+            itemData.valueEN !== undefined && itemData.valueVI !== undefined
+              ? (itemOutput += "<div>" + itemData.valueVI + "</div>")
+              : null;
+          }
+          outputs += "<div>" + itemOutput + "</div>";
         }
+        // for (var i = 0; i < item.data.vi.length; i++) {
+        //   let itemData = item.data.vi[i];
+        //   console.log("itemData ", itemData, itemData !== null);
+        //   outputs += '<div>' + itemData + '</div>'
+        //   if (itemData !== null) {
+        //     let itemOutput = "";
+        //     if (itemData.title !== undefined) {
+        //       itemOutput += "<div>" + item.title.vi + "</div>";
+        //     }
+        //     {
+        //       itemData.data !== undefined
+        //         ? itemData.data.forEach((item, i) => {
+        //             itemOutput += "<div>" + item.valueVI + "</div>";
+        //           })
+        //         : null;
+        //     }
+        //     {
+        //       itemData.valueEN !== undefined && itemData.valueVI !== undefined
+        //         ? (itemOutput += "<div>" + itemData.valueVI + "</div>")
+        //         : null;
+        //     }
+
+        //     outputs += "<div>" + itemOutput + "</div>";
+        //   }
+        // }
       }
     }
   }
