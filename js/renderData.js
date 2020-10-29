@@ -53,7 +53,7 @@ function renderSpecialData(itemInput, idParse = "demo") {
     let tempData = itemInput.data[j];
     for (let k = 0; k < tempData.length; k++) {
       let itemData = tempData[k];
-      console.log("item.data ", itemData.data);
+      // console.log("item.data ", itemData.data);
       if (itemData.data !== undefined) {
         // outputs += "<div>" + '-------------' + "</div>";
         // outputs += "<div>" + '\n' + "</div>";
@@ -204,7 +204,13 @@ function myFunction(toogleId, containerId) {
 }
 
 function uploadImage() {
+  getConfigSkinAI(processImage)
+  // processImage()
+}
+
+function processImage (inputData) {
   var img = document.getElementById("imageShow");
+  console.log('inputData',inputData)
   if (img.src !== null) {
     let jdata = {
       email: "ktpm489@gmail.com",

@@ -43,39 +43,39 @@
   // }catch(e){
   //   console.log('e',e)
   // }
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = process;
-  xhr.open("GET", "https://cdn.jsdelivr.net/gh/ktpm489/admin-demo/config3.js", true);
-  xhr.send();
+  // var xhr = new XMLHttpRequest();
+  // xhr.onreadystatechange = process;
+  // xhr.open("GET", "https://cdn.jsdelivr.net/gh/ktpm489/admin-demo/config3.js", true);
+  // xhr.send();
 
-  function process() {
-    if (xhr.readyState == 4) {
-      // var resp = JSON.parse(xhr.responseText);
+  // function process() {
+  //   if (xhr.readyState == 4) {
+  //     // var resp = JSON.parse(xhr.responseText);
 
-      // resp now has the text and you can process it.
-      console.log(JSON.parse(xhr.responseText));
-    }
-  }
+  //     // resp now has the text and you can process it.
+  //     console.log(JSON.parse(xhr.responseText));
+  //   }
+  // }
   
-  // Request getData from AI Skin
-  var xhrSkin = new XMLHttpRequest();
-  xhrSkin.onreadystatechange = processSkin;
-  xhrSkin.open("GET", "https://ancient-bastion-76504.herokuapp.com/api/userskin/5f47b3338f1bbb0aebd0d47d", true);
-  xhrSkin.send();
+  // // Request getData from AI Skin
+  // var xhrSkin = new XMLHttpRequest();
+  // xhrSkin.onreadystatechange = processSkin;
+  // xhrSkin.open("GET", "https://ancient-bastion-76504.herokuapp.com/api/userskin/5f47b3338f1bbb0aebd0d47d", true);
+  // xhrSkin.send();
 
-  function processSkin() {
-    if (xhrSkin.readyState == 4) {
-      let res = xhrSkin.responseText
-      let dataJSON = JSON.parse(res)
-      if (dataJSON !== null) {
-        renderData(dataJSON.user.facedata.generalResult, 'generalResult')
-        renderData(dataJSON.user.facedata.specialResult, 'specialResult', 'Kết luận từng phần')
-        renderImg(dataJSON.user.facedata.image_info.url)
-        processSpecialResult(dataJSON.user.facedata)
-      }
+  // function processSkin() {
+  //   if (xhrSkin.readyState == 4) {
+  //     let res = xhrSkin.responseText
+  //     let dataJSON = JSON.parse(res)
+  //     if (dataJSON !== null) {
+  //       renderData(dataJSON.user.facedata.generalResult, 'generalResult')
+  //       renderData(dataJSON.user.facedata.specialResult, 'specialResult', 'Kết luận từng phần')
+  //       renderImg(dataJSON.user.facedata.image_info.url)
+  //       processSpecialResult(dataJSON.user.facedata)
+  //     }
       
-    }
-  }
+  //   }
+  // }
 </script>
 <script>
   // function myFunction() {
