@@ -262,5 +262,5 @@ function openRenderPage() {
       document.getElementById("subform").style.display = "none";
       document.getElementById("pictuer-id").style.display = "none";
       document.getElementById("c-placeholder").style.display = "block";
-      document.getElementById("uploadbtn").innerHTML = "Upload";
+      document.getElementById("uploadbtn").innerHTML = "Tải lên";
 }
