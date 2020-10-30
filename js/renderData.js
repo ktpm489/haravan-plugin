@@ -117,7 +117,7 @@ function renderImg(url) {
 
 function closeFunction() {
   document.getElementById("myForm").style.display = "none";
-  document.getElementById("subform").style.display = "block";
+  document.getElementById("subform").style.display = "flex";
   document.getElementById("pictuer-id").style.display = "flex";
   document.getElementById("c-placeholder").style.display = "none";
 }
