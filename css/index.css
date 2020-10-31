@@ -39,9 +39,10 @@ body {
 .picture-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
+  max-width: 500px;
 }
 
 /* Add styles to the form container */
@@ -231,3 +232,46 @@ body {
     align-items: center;
     justify-content: space-between;
 }
+
+.custom {
+  background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+
+.file {
+  position: relative;
+}
+.file label {
+  background: #4CAF50;
+  padding: 6px 20px;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  transition: all .4s;
+}
+.file input {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  top: 0;
+  opacity: 0.01;
+  cursor: pointer;
+}
+.file input:hover + label,
+.file input:focus + label {
+  background: #34495E;
+  color: #4CAF50;
+}
+
+
+
