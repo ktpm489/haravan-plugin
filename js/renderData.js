@@ -121,6 +121,27 @@ function closeFunction() {
   document.getElementById("imageShow").src =
     "https://i.ibb.co/P4pwftk/skin.png";
   document.getElementById('output').src = ''
+  disableBtn()
+}
+
+
+function processGeneralConclusion(dataTransfer) {
+  let drawMoleArrDataInput = [];
+  for (let i = 0; i < dataTransfer.generalResult.data.length; i++) {
+    let itemData = dataTransfer.generalResult.data[i];
+    for (let j = 0; j < itemData.data.length; j++) {
+      let eachData = itemData.data[j];
+      if (eachData.key === "SkinMole") {
+        drawMoleArrDataInput = eachData.drawArr;
+      } 
+    }
+  }
+  // console.log("drawBlackHeadArrDataInput", drawBlackHeadArrDataInput);
+  // console.log("drawSpotArrDataInput", drawSpotArrDataInput);
+  // console.log("drawPimpleArrDataInput", drawPimpleArrDataInput);
+  // console.log("drawAcneArrDataInput", drawAcneArrDataInput);
+  // draw mole 
+  drawData(drawMoleArrDataInput, "moleContainer", "red");
 }
 
 function processSpecialResult(dataTransfer) {
@@ -154,10 +175,10 @@ function processSpecialResult(dataTransfer) {
   drawData(drawSpotArrDataInput, "spotContainer", "orange");
   // drawData(drawSpotArrDataInput, 'myimgContainer' )
   //drawPimpleArrDataInput
-  drawData(drawPimpleArrDataInput, "pimpleContainer", "red");
+  drawData(drawPimpleArrDataInput, "pimpleContainer", "green");
   // drawData(drawPimpleArrDataInput, 'myimgContainer' )
   // drawAcneArrDataInput
-  drawData(drawAcneArrDataInput, "acneContainer", "green");
+  drawData(drawAcneArrDataInput, "acneContainer", "yellow");
   // drawData(drawAcneArrDataInput, 'myimgContainer' )
 }
 
@@ -272,6 +293,7 @@ function renderSkinData(dataJSON) {
   );
   renderImg(dataJSON.data.facedata.image_info.url);
   processSpecialResult(dataJSON.data.facedata);
+  processGeneralConclusion(dataJSON.data.facedata);
 }
 
 function openRenderPage() {
