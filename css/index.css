@@ -250,6 +250,7 @@ body {
 
 .file {
   position: relative;
+  width: fit-content;
 }
 .file label {
   background: #4CAF50;
@@ -264,6 +265,7 @@ body {
   display: inline-block;
   left: 0;
   top: 0;
+  max-width: 30px;
   opacity: 0.01;
   cursor: pointer;
 }

@@ -14,7 +14,6 @@ function renderData(itemInput, idParse = "demo", titleDefault = "") {
     if (itemData !== null) {
       let itemOutput = "";
       if (itemData.title !== undefined) {
-        
         itemOutput += "<div>" + itemData.title.vi + "</div>";
       }
       {
@@ -45,7 +44,6 @@ function renderSpecialData(itemInput, idParse = "demo") {
   // TODO fix here
   // console.log("itemInput", itemInput);
   if (itemInput.title !== undefined) {
-   
     outputs += "<div>" + itemInput.title.vi + "</div>";
   }
 
@@ -59,7 +57,7 @@ function renderSpecialData(itemInput, idParse = "demo") {
         // outputs += "<div>" + '\n' + "</div>";
         // outputs += '<div>' + item.title.vi+ '</div>';
         if (itemData !== null) {
-          outputs += "<div>" + '-------------' + "</div>";
+          outputs += "<div>" + "-------------" + "</div>";
           let itemOutput = "";
           if (itemData.title !== undefined) {
             itemOutput += "<div>" + itemData.title.vi + "</div>";
@@ -67,8 +65,8 @@ function renderSpecialData(itemInput, idParse = "demo") {
           {
             itemData.data !== undefined
               ? itemData.data.vi.forEach((item, i) => {
-                itemOutput += "<div>" + item + "</div>";
-              })
+                  itemOutput += "<div>" + item + "</div>";
+                })
               : null;
           }
           {
@@ -120,7 +118,9 @@ function closeFunction() {
   document.getElementById("subform").style.display = "flex";
   document.getElementById("pictuer-id").style.display = "flex";
   document.getElementById("c-placeholder").style.display = "none";
-  document.getElementById("imageShow").src = "https://i.ibb.co/P4pwftk/skin.png";
+  document.getElementById("imageShow").src =
+    "https://i.ibb.co/P4pwftk/skin.png";
+  document.getElementById('output').src = ''
 }
 
 function processSpecialResult(dataTransfer) {
@@ -205,19 +205,24 @@ function myFunction(toogleId, containerId) {
 }
 
 function uploadImage() {
-  getConfigSkinAI(processImage)
+  getConfigSkinAI(processImage);
   // processImage()
 }
 
-function processImage (inputData) {
-  var img = document.getElementById("imageShow");
-  // console.log('inputData',inputData)
+function processImage(inputData) {
+  // var img = document.getElementById("imageShow");
+  var img = document.getElementById("output");
+  // console.log('inputData',img.src)
+  // to do use it
   // console.log(img.src.replace('data:image/jpeg;base64,',''))
+  // data.substr(data.indexOf("base64,")+7)
   try {
     if (img.src !== null) {
+      let dataInput = img.src
       let jdata = {
         email: "ktpm489@gmail.com",
-        image_base64: img.src.replace('data:image/jpeg;base64,','') + ''
+        // image_base64: img.src.replace("data:image/jpeg;base64,", "") + "",
+        image_base64: dataInput.substr(dataInput.indexOf("base64,")+7) + '',
       };
       var xhttp = new XMLHttpRequest();
       xhttp.open(
@@ -231,43 +236,58 @@ function processImage (inputData) {
         "NWY0N2FkMjg4ZjFiYmIwYWViZDBkNDdhXzU2Nzg5MTBfSG5mMlJRcDhMbkNuWWhBQw=="
       );
       xhttp.send(JSON.stringify(jdata));
-  
+
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           if (this.status === 200) {
             console.log(this.responseText);
             let dataJSON = JSON.parse(this.responseText);
             renderSkinData(dataJSON);
-            openRenderPage()
+            openRenderPage();
           } else {
-            errorShow()
+            errorShow();
           }
-         
-        } 
+        } else if (this.status == 400) {
+          errorShow();
+          resetFistPageData();
+        }
       };
     }
   } catch (e) {
-    errorShow()
-  } 
-
-  
+    errorShow();
+  }
 }
 
 function renderSkinData(dataJSON) {
-  renderData(dataJSON.data.facedata.generalResult, 'generalResult')
-  renderData(dataJSON.data.facedata.specialResult, 'specialResult', 'Kết quả từng phần')
-  renderData(dataJSON.data.facedata.generalConclusion, 'generalConclusion')
+  renderData(dataJSON.data.facedata.generalResult, "generalResult");
+  renderData(
+    dataJSON.data.facedata.specialResult,
+    "specialResult",
+    "Kết quả từng phần"
+  );
+  renderData(dataJSON.data.facedata.generalConclusion, "generalConclusion");
   renderSpecialData(
     dataJSON.data.facedata.specialConclusion,
     "specialConclusion"
   );
-  renderImg(dataJSON.data.facedata.image_info.url)
-  processSpecialResult(dataJSON.data.facedata)
+  renderImg(dataJSON.data.facedata.image_info.url);
+  processSpecialResult(dataJSON.data.facedata);
 }
 
 function openRenderPage() {
-      document.getElementById("subform").style.display = "none";
-      document.getElementById("pictuer-id").style.display = "none";
-      document.getElementById("c-placeholder").style.display = "block";
-      document.getElementById("uploadbtn").innerHTML = "Tải lên";
+  document.getElementById("subform").style.display = "none";
+  document.getElementById("pictuer-id").style.display = "none";
+  document.getElementById("c-placeholder").style.display = "block";
+  document.getElementById("uploadbtn").innerHTML = "Tải lên";
+}
+
+function resetFistPageData() {
+  document.getElementById("myForm").style.display = "block";
+  document.getElementById("subform").style.display = "flex";
+  document.getElementById("pictuer-id").style.display = "flex";
+  document.getElementById("c-placeholder").style.display = "none";
+  document.getElementById("uploadbtn").innerHTML = "Tải lên";
+  document.getElementById("imageShow").src =
+    "https://i.ibb.co/P4pwftk/skin.png";
+  document.getElementById('output').src = ''
 }

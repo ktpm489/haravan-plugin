@@ -23,8 +23,11 @@ function includeChooseFileListen() {
         var reader = new FileReader();
         reader.onloadend = function () {
           img.src = reader.result;
+          // draw render output image
+          
         };
         reader.readAsDataURL(files[0]);
+        resizeImage(files[0]);
       }
     },
     false
@@ -107,11 +110,13 @@ function takepicture() {
     canvas.height = height;
     context.drawImage(video, 0, 0, width, height);
     var data = canvas.toDataURL("image/png");
-    console.log("data", data);
+    // console.log("data11111", data);
     photo.setAttribute("src", data);
     document.getElementById("subform").style.display = "flex";
     document.getElementById("cameraForm").style.display = "none";
     document.getElementById("c-placeholder").style.display = "none";
+    // draw render output image
+    resizeImageCapture(data)
   } else {
     clearphoto();
     document.getElementById("subform").style.display = "flex";
@@ -139,3 +144,69 @@ function videoOff() {
 }
 
 // window.addEventListener('load', startup, false);
+
+
+function resizeImage(fileInput) {
+      var file = fileInput;
+      if (file) {
+
+          var reader = new FileReader();
+          // Set the image once loaded into file reader
+          reader.onload = function(e) {
+
+              var img = document.createElement("img");
+              img.src = e.target.result;
+
+              var canvas = document.createElement("canvas");
+              var ctx = canvas.getContext("2d");
+              ctx.drawImage(img, 0, 0);
+
+              var MAX_WIDTH = 400;
+              var MAX_HEIGHT = 400;
+              var width = img.width;
+              var height = img.height;
+              console.log(width,height)
+              if (width > height) {
+                  if (width > MAX_WIDTH) {
+                      height *= MAX_WIDTH / width;
+                      width = MAX_WIDTH;
+                  }
+              } else {
+                  if (height > MAX_HEIGHT) {
+                      width *= MAX_HEIGHT / height;
+                      height = MAX_HEIGHT;
+                  }
+              }
+              canvas.width = 500;
+              canvas.height = 500;
+              var ctx = canvas.getContext("2d");
+              ctx.drawImage(img, 0, 0, 500, 500);
+              dataurl = canvas.toDataURL(file.type);
+              document.getElementById('output').src = dataurl;
+          }
+          reader.readAsDataURL(file);
+
+      }
+}
+
+function resizeImageCapture(data) {
+  var canvas = document.createElement("canvas");
+var ctx = canvas.getContext("2d");
+
+canvas.width = 500; // target width
+canvas.height = 500; // target height
+var image = new Image();
+image.onload = function(e) {
+    ctx.drawImage(image, 
+        0, 0, image.width, image.height, 
+        0, 0, canvas.width, canvas.height
+    );
+    // create a new base64 encoding
+    // var resampledImage = new Image();
+    // resampledImage.src = canvas.toDataURL();
+    // console.log('canvas.toDataURL()',canvas.toDataURL())
+    document.getElementById('output').src = canvas.toDataURL();
+    // document.getElementById("resampled").appendChild(resampledImage);
+};
+image.src = data;
+}
