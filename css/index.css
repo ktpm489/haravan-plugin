@@ -295,5 +295,10 @@ body {
   }
 }
 
-
+.title-result {
+    font-weight: bold;
+    font-size: 1.5em;
+    padding-bottom: 3px;
+    color: firebrick;
+}
 

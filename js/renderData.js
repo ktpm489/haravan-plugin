@@ -2,7 +2,7 @@ function renderData(itemInput, idParse = "demo", titleDefault = "") {
   var outputs = "";
 
   if (itemInput.title !== undefined) {
-    outputs += "<div>" + itemInput.title.vi + "</div>";
+    outputs += "<div class='title-result'>" + itemInput.title.vi + "</div>";
   } else if (titleDefault !== "") {
     outputs += "<div>" + titleDefault + "</div>";
     outputs += "<div>" + "\n" + "</div>";
@@ -44,7 +44,7 @@ function renderSpecialData(itemInput, idParse = "demo") {
   // TODO fix here
   // console.log("itemInput", itemInput);
   if (itemInput.title !== undefined) {
-    outputs += "<div>" + itemInput.title.vi + "</div>";
+    outputs += "<div class='title-result'>" + itemInput.title.vi + "</div>";
   }
 
   for (let j = 0; j < itemInput.data.length; j++) {
