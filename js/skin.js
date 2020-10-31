@@ -28,6 +28,7 @@ function includeChooseFileListen() {
         };
         reader.readAsDataURL(files[0]);
         resizeImage(files[0]);
+        enableBtn();
       }
     },
     false
@@ -117,6 +118,7 @@ function takepicture() {
     document.getElementById("c-placeholder").style.display = "none";
     // draw render output image
     resizeImageCapture(data)
+    enableBtn();
   } else {
     clearphoto();
     document.getElementById("subform").style.display = "flex";
@@ -165,7 +167,7 @@ function resizeImage(fileInput) {
               var MAX_HEIGHT = 400;
               var width = img.width;
               var height = img.height;
-              console.log(width,height)
+              // console.log(width,height)
               if (width > height) {
                   if (width > MAX_WIDTH) {
                       height *= MAX_WIDTH / width;

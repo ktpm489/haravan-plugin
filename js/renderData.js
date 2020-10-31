@@ -281,8 +281,8 @@ function openRenderPage() {
   document.getElementById("uploadbtn").innerHTML = "Tải lên";
 }
 
-function resetFistPageData() {
-  document.getElementById("myForm").style.display = "block";
+function resetFistPageData(show= true) {
+  document.getElementById("myForm").style.display = show ?  "block" : 'none';
   document.getElementById("subform").style.display = "flex";
   document.getElementById("pictuer-id").style.display = "flex";
   document.getElementById("c-placeholder").style.display = "none";
@@ -290,4 +290,16 @@ function resetFistPageData() {
   document.getElementById("imageShow").src =
     "https://i.ibb.co/P4pwftk/skin.png";
   document.getElementById('output').src = ''
+  disableBtn()
+}
+
+
+function disableBtn() {
+  document.getElementById("uploadbtn").disabled = true;
+  document.getElementById("uploadbtn").style.opacity = 0.5;
+}
+
+function enableBtn() {
+  document.getElementById("uploadbtn").disabled = false;
+  document.getElementById("uploadbtn").style.opacity = 1;
 }

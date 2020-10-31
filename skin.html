@@ -50,8 +50,9 @@
     }
 
     function closeForm() {
-      document.getElementById("myForm").style.display = "none";
+      // document.getElementById("myForm").style.display = "none";
       // document.getElementById("c-placeholder").style.display = "block";
+      resetFistPageData(false)
     }
 
     function openResult () {
@@ -62,6 +63,7 @@
   </script>
   <script>
     includeChooseFileListen();
+    disableBtn();
   </script>
   <script>
     $(function () {
