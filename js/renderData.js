@@ -212,7 +212,7 @@ function uploadImage() {
 function processImage (inputData) {
   var img = document.getElementById("imageShow");
   // console.log('inputData',inputData)
-  console.log(img.src.replace('data:image/jpeg;base64,',''))
+  // console.log(img.src.replace('data:image/jpeg;base64,',''))
   try {
     if (img.src !== null) {
       let jdata = {
