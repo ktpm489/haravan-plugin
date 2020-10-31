@@ -11,15 +11,10 @@
 </head>
 
 <body>
-  <button class="open-button" onclick="openForm()">Phân tích da mặt thông minh</button>
+  <button class="open-button" onclick="openForm()">Phân tích vấn đề da mặt</button>
 
   <div class="form-popup" id="myForm">
     <div class='picture-container' id="pictuer-id">
-      <!-- <input type="file" id="inputImage"  class="custom-file-input"> -->
-      <!-- <label>
-        Upload
-       <input type="file" id="inputImage" style="visibility: hidden;"/>
-    </label> -->
     <p class="file">
       <input type="file" name="file" id="inputImage" />
       <label for="inputImage">Chọn ảnh</label>
@@ -46,12 +41,9 @@
   <script>
     function openForm() {
       document.getElementById("myForm").style.display = "block";
-      // document.getElementById("c-placeholder").style.display = "block";
     }
 
     function closeForm() {
-      // document.getElementById("myForm").style.display = "none";
-      // document.getElementById("c-placeholder").style.display = "block";
       resetFistPageData(false)
     }
 

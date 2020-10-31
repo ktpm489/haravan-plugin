@@ -16,15 +16,10 @@ function includeChooseFileListen() {
       document.getElementById("cameraForm").style.display = "none";
       var files = fileToRead.files;
       if (files.length) {
-        // console.log("Filename: " + files[0].name);
-        // console.log("Type: " + files[0].type);
-        // console.log("Size: " + files[0].size + " bytes");
         var img = document.getElementById("imageShow");
         var reader = new FileReader();
         reader.onloadend = function () {
           img.src = reader.result;
-          // draw render output image
-          
         };
         reader.readAsDataURL(files[0]);
         resizeImage(files[0]);
@@ -36,7 +31,6 @@ function includeChooseFileListen() {
 }
 
 function dislayCamera() {
-  // runCamera()
   document.getElementById("subform").style.display = "none";
   document.getElementById("cameraForm").style.display = "block";
   startup();
@@ -45,7 +39,6 @@ function dislayCamera() {
 function startup() {
   video = document.getElementById("video");
   canvas = document.getElementById("canvas");
-  // photo = document.getElementById('photo');
   photo = document.getElementById("imageShow");
   startbutton = document.getElementById("startbutton");
 
@@ -111,7 +104,6 @@ function takepicture() {
     canvas.height = height;
     context.drawImage(video, 0, 0, width, height);
     var data = canvas.toDataURL("image/png");
-    // console.log("data11111", data);
     photo.setAttribute("src", data);
     document.getElementById("subform").style.display = "flex";
     document.getElementById("cameraForm").style.display = "none";
@@ -134,18 +126,14 @@ function videoOff() {
   // A video's MediaStream object is available through its srcObject attribute
   video = document.getElementById("video");
   const mediaStream = video.srcObject;
-
   // Through the MediaStream, you can get the MediaStreamTracks with getTracks():
   const tracks = mediaStream.getTracks();
-
   // Tracks are returned as an array, so if you know you only have one, you can stop it with:
   // tracks[0].pause();
 
   // Or stop all like so:
   tracks.forEach((track) => track.stop());
 }
-
-// window.addEventListener('load', startup, false);
 
 
 function resizeImage(fileInput) {
@@ -167,7 +155,6 @@ function resizeImage(fileInput) {
               var MAX_HEIGHT = 400;
               var width = img.width;
               var height = img.height;
-              // console.log(width,height)
               if (width > height) {
                   if (width > MAX_WIDTH) {
                       height *= MAX_WIDTH / width;
@@ -203,12 +190,7 @@ image.onload = function(e) {
         0, 0, image.width, image.height, 
         0, 0, canvas.width, canvas.height
     );
-    // create a new base64 encoding
-    // var resampledImage = new Image();
-    // resampledImage.src = canvas.toDataURL();
-    // console.log('canvas.toDataURL()',canvas.toDataURL())
     document.getElementById('output').src = canvas.toDataURL();
-    // document.getElementById("resampled").appendChild(resampledImage);
 };
 image.src = data;
 }

@@ -9,7 +9,6 @@ function renderData(itemInput, idParse = "demo", titleDefault = "") {
   }
 
   for (var i = 0; i < itemInput.data.length; i++) {
-    //   outputs += '<div id="' + data[i].id + '">' + data[i].id + ':' + data[i].name + '</div>';
     let itemData = itemInput.data[i];
     if (itemData !== null) {
       let itemOutput = "";
@@ -41,8 +40,6 @@ function renderData(itemInput, idParse = "demo", titleDefault = "") {
 
 function renderSpecialData(itemInput, idParse = "demo") {
   var outputs = "";
-  // TODO fix here
-  // console.log("itemInput", itemInput);
   if (itemInput.title !== undefined) {
     outputs += "<div class='title-result'>" + itemInput.title.vi + "</div>";
   }
@@ -51,11 +48,7 @@ function renderSpecialData(itemInput, idParse = "demo") {
     let tempData = itemInput.data[j];
     for (let k = 0; k < tempData.length; k++) {
       let itemData = tempData[k];
-      // console.log("item.data ", itemData.data);
       if (itemData.data !== undefined) {
-        // outputs += "<div>" + '-------------' + "</div>";
-        // outputs += "<div>" + '\n' + "</div>";
-        // outputs += '<div>' + item.title.vi+ '</div>';
         if (itemData !== null) {
           outputs += "<div>" + "-------------" + "</div>";
           let itemOutput = "";
@@ -76,31 +69,6 @@ function renderSpecialData(itemInput, idParse = "demo") {
           }
           outputs += "<div>" + itemOutput + "</div>";
         }
-        // for (var i = 0; i < item.data.vi.length; i++) {
-        //   let itemData = item.data.vi[i];
-        //   console.log("itemData ", itemData, itemData !== null);
-        //   outputs += '<div>' + itemData + '</div>'
-        //   if (itemData !== null) {
-        //     let itemOutput = "";
-        //     if (itemData.title !== undefined) {
-        //       itemOutput += "<div>" + item.title.vi + "</div>";
-        //     }
-        //     {
-        //       itemData.data !== undefined
-        //         ? itemData.data.forEach((item, i) => {
-        //             itemOutput += "<div>" + item.valueVI + "</div>";
-        //           })
-        //         : null;
-        //     }
-        //     {
-        //       itemData.valueEN !== undefined && itemData.valueVI !== undefined
-        //         ? (itemOutput += "<div>" + itemData.valueVI + "</div>")
-        //         : null;
-        //     }
-
-        //     outputs += "<div>" + itemOutput + "</div>";
-        //   }
-        // }
       }
     }
   }
@@ -136,11 +104,6 @@ function processGeneralConclusion(dataTransfer) {
       } 
     }
   }
-  // console.log("drawBlackHeadArrDataInput", drawBlackHeadArrDataInput);
-  // console.log("drawSpotArrDataInput", drawSpotArrDataInput);
-  // console.log("drawPimpleArrDataInput", drawPimpleArrDataInput);
-  // console.log("drawAcneArrDataInput", drawAcneArrDataInput);
-  // draw mole 
   drawData(drawMoleArrDataInput, "moleContainer", "red");
 }
 
@@ -164,28 +127,14 @@ function processSpecialResult(dataTransfer) {
       }
     }
   }
-  // console.log("drawBlackHeadArrDataInput", drawBlackHeadArrDataInput);
-  // console.log("drawSpotArrDataInput", drawSpotArrDataInput);
-  // console.log("drawPimpleArrDataInput", drawPimpleArrDataInput);
-  // console.log("drawAcneArrDataInput", drawAcneArrDataInput);
-  // draw black head
   drawData(drawBlackHeadArrDataInput, "blackHeadContainer", "pink");
-  // drawData(drawBlackHeadArrDataInput, 'myimgContainer' )
-  // drawSpotArrDataInput
   drawData(drawSpotArrDataInput, "spotContainer", "orange");
-  // drawData(drawSpotArrDataInput, 'myimgContainer' )
-  //drawPimpleArrDataInput
   drawData(drawPimpleArrDataInput, "pimpleContainer", "green");
-  // drawData(drawPimpleArrDataInput, 'myimgContainer' )
-  // drawAcneArrDataInput
   drawData(drawAcneArrDataInput, "acneContainer", "yellow");
-  // drawData(drawAcneArrDataInput, 'myimgContainer' )
 }
 
 function drawData(arr, itemId, color = "red", taux = 1) {
-  // console.log("EE222", arr.length > 0);
   if (arr.length > 0) {
-    // console.log("EE");
     for (var i = 0; i < arr.length; i++) {
       renderDivItem(itemId, arr[i], taux, color);
     }
@@ -193,7 +142,6 @@ function drawData(arr, itemId, color = "red", taux = 1) {
 }
 
 function renderDivItem(itemId, data, taux = 1, color = "red") {
-  // console.log("EE1");
   var div = document.createElement("div");
   div.style.width = data.width * taux + "px";
   div.style.height = data.height * taux + "px";
@@ -202,22 +150,13 @@ function renderDivItem(itemId, data, taux = 1, color = "red") {
   div.style.color = color;
   div.style.borderColor = color;
   div.className = "box";
-  // this.renderer.addClass(div, "box");
-  // this.renderer.setStyle(div, "width", data.width * this.taux + "px");
-  // this.renderer.setStyle(div, "height", data.height * this.taux + "px");
-  // this.renderer.setStyle(div, "top", data.top * this.taux + "px");
-  // this.renderer.setStyle(div, "left", data.left * this.taux + "px");
   let el = document.getElementById(itemId);
-  // console.log("el", el);
   el.appendChild(div);
 }
 
 function myFunction(toogleId, containerId) {
-  // console.log(toogleId, containerId);
   var checkBox = document.getElementById(toogleId);
-  // console.log("checkBox", checkBox);
   var text = document.getElementById(containerId);
-  // console.log("text", text);
   if (checkBox.checked == true) {
     text.style.display = "block";
   } else {
@@ -227,22 +166,15 @@ function myFunction(toogleId, containerId) {
 
 function uploadImage() {
   getConfigSkinAI(processImage);
-  // processImage()
 }
 
 function processImage(inputData) {
-  // var img = document.getElementById("imageShow");
   var img = document.getElementById("output");
-  // console.log('inputData',img.src)
-  // to do use it
-  // console.log(img.src.replace('data:image/jpeg;base64,',''))
-  // data.substr(data.indexOf("base64,")+7)
   try {
     if (img.src !== null) {
       let dataInput = img.src
       let jdata = {
         email: "ktpm489@gmail.com",
-        // image_base64: img.src.replace("data:image/jpeg;base64,", "") + "",
         image_base64: dataInput.substr(dataInput.indexOf("base64,")+7) + '',
       };
       var xhttp = new XMLHttpRequest();
