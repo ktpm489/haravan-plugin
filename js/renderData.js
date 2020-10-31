@@ -120,6 +120,7 @@ function closeFunction() {
   document.getElementById("subform").style.display = "flex";
   document.getElementById("pictuer-id").style.display = "flex";
   document.getElementById("c-placeholder").style.display = "none";
+  document.getElementById("imageShow").src = "https://i.ibb.co/P4pwftk/skin.png";
 }
 
 function processSpecialResult(dataTransfer) {
