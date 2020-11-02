@@ -285,7 +285,7 @@ body {
     top :2%
   }
   .c-placeholder-container {
-    display: block; 
+    display: none; 
     width: 100vw;
     bottom: 0.5vh;
     position: relative;

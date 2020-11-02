@@ -170,23 +170,24 @@ function uploadImage() {
 
 function processImage(inputData) {
   var img = document.getElementById("output");
+  // console.log('inputData', inputData.configSkin.email)
   try {
     if (img.src !== null) {
       let dataInput = img.src
       let jdata = {
-        email: "ktpm489@gmail.com",
+        email: inputData.configSkin.email,
         image_base64: dataInput.substr(dataInput.indexOf("base64,")+7) + '',
       };
       var xhttp = new XMLHttpRequest();
       xhttp.open(
         "POST",
-        " https://shrouded-brushlands-68077.herokuapp.com/api/userskin",
+        inputData.configSkin.link,
         true
       );
       xhttp.setRequestHeader("Content-Type", "application/json");
       xhttp.setRequestHeader(
         "apikey",
-        "NWY0N2FkMjg4ZjFiYmIwYWViZDBkNDdhXzU2Nzg5MTBfSG5mMlJRcDhMbkNuWWhBQw=="
+        inputData.configSkin.key
       );
       xhttp.send(JSON.stringify(jdata));
 
