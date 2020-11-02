@@ -1,0 +1,40 @@
+
+
++ Trong phần header thêm đoạn code sau 
+
+<script type="text/javascript" src="./contain/js/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="./contain/css/index.css">
+
+
++ Trong phần body thêm 1 thẻ div 
+<div id="b-placeholder">
+
+Và thêm 1 function sau :
+
+<script>
+  $(function(){
+    $("#b-placeholder").load("./contain/skin.html");
+  });
+  </script>
+
+
+  Ví dụ code hoàn thiện
+
+
+  <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="./contain/js/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="./contain/css/index.css">
+</head>
+<body>
+<div id="b-placeholder">
+</div>
+<script>
+  $(function(){
+    $("#b-placeholder").load("./contain/skin.html");
+  });
+  </script>
+</body>
+</html>
