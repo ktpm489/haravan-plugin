@@ -1,7 +1,6 @@
 function getConfigSkinAI (functionProcess) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = process;
-    // xhr.open("GET", "https://cdn.jsdelivr.net/gh/ktpm489/admin-demo/config3.js", true);
     xhr.open("GET", "https://raw.githubusercontent.com/ktpm489/admin-demo/master/config3.js", true);
     xhr.send();
     function process() {
@@ -16,8 +15,6 @@ function getConfigSkinAI (functionProcess) {
         } 
     }
 }
-
-
-function errorShow (text= 'Vui lòng thử lại') {
+function errorShow (text="Vui lòng thử lại") {
     alert(text);
 }

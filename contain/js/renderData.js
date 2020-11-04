@@ -2,7 +2,7 @@ function renderData(itemInput, idParse = "demo", titleDefault = "") {
   var outputs = "";
 
   if (itemInput.title !== undefined) {
-    outputs += "<div class='title-result'>" + itemInput.title.vi + "</div>";
+    outputs += "<div class=" + "title-result" + ">" + itemInput.title.vi + "</div>";
   } else if (titleDefault !== "") {
     outputs += "<div>" + titleDefault + "</div>";
     outputs += "<div>" + "\n" + "</div>";
@@ -41,7 +41,7 @@ function renderData(itemInput, idParse = "demo", titleDefault = "") {
 function renderSpecialData(itemInput, idParse = "demo") {
   var outputs = "";
   if (itemInput.title !== undefined) {
-    outputs += "<div class='title-result'>" + itemInput.title.vi + "</div>";
+    outputs += "<div class=" + "title-result" + ">" + itemInput.title.vi + "</div>";
   }
 
   for (let j = 0; j < itemInput.data.length; j++) {
@@ -88,7 +88,7 @@ function closeFunction() {
   document.getElementById("c-placeholder").style.display = "none";
   document.getElementById("imageShow").src =
     "https://i.ibb.co/P4pwftk/skin.png";
-  document.getElementById('output').src = ''
+  document.getElementById("output").src = ""
   disableBtn()
 }
 
@@ -170,13 +170,13 @@ function uploadImage() {
 
 function processImage(inputData) {
   var img = document.getElementById("output");
-  // console.log('inputData', inputData.configSkin.email)
+  // console.log("inputData", inputData.configSkin.email)
   try {
     if (img.src !== null) {
       let dataInput = img.src
       let jdata = {
         email: inputData.configSkin.email,
-        image_base64: dataInput.substr(dataInput.indexOf("base64,")+7) + '',
+        image_base64: dataInput.substr(dataInput.indexOf("base64,")+7) + "",
       };
       var xhttp = new XMLHttpRequest();
       xhttp.open(
@@ -237,14 +237,14 @@ function openRenderPage() {
 }
 
 function resetFistPageData(show= true) {
-  document.getElementById("myForm").style.display = show ?  "block" : 'none';
+  document.getElementById("myForm").style.display = show ?  "block" : "none";
   document.getElementById("subform").style.display = "flex";
   document.getElementById("pictuer-id").style.display = "flex";
   document.getElementById("c-placeholder").style.display = "none";
   document.getElementById("uploadbtn").innerHTML = "Tải lên";
   document.getElementById("imageShow").src =
     "https://i.ibb.co/P4pwftk/skin.png";
-  document.getElementById('output').src = ''
+  document.getElementById("output").src = ""
   disableBtn()
 }
 
