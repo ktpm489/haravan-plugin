@@ -163,7 +163,7 @@ function myFunction(toogleId, containerId) {
     text.style.display = "none";
   }
 }
-function myFunction1(toogleId= 'myCheckSpot', containerId='spotContainer') {
+function myFunction1(toogleId= "myCheckSpot", containerId="spotContainer") {
   var checkBox = document.getElementById(toogleId);
   var text = document.getElementById(containerId);
   if (checkBox.checked == true) {
@@ -172,7 +172,7 @@ function myFunction1(toogleId= 'myCheckSpot', containerId='spotContainer') {
     text.style.display = "none";
   }
 }
-function myFunction2(toogleId = 'myCheckAcne', containerId = 'acneContainer') {
+function myFunction2(toogleId = "myCheckAcne", containerId = "acneContainer") {
   var checkBox = document.getElementById(toogleId);
   var text = document.getElementById(containerId);
   if (checkBox.checked == true) {
@@ -181,7 +181,7 @@ function myFunction2(toogleId = 'myCheckAcne', containerId = 'acneContainer') {
     text.style.display = "none";
   }
 }
-function myFunction3(toogleId= 'myCheckPimple', containerId = 'pimpleContainer') {
+function myFunction3(toogleId= "myCheckPimple", containerId = "pimpleContainer") {
   var checkBox = document.getElementById(toogleId);
   var text = document.getElementById(containerId);
   if (checkBox.checked == true) {
@@ -190,7 +190,7 @@ function myFunction3(toogleId= 'myCheckPimple', containerId = 'pimpleContainer')
     text.style.display = "none";
   }
 }
-function myFunction4(toogleId= 'myCheckBlackhead', containerId='blackHeadContainer') {
+function myFunction4(toogleId= "myCheckBlackhead", containerId="blackHeadContainer") {
   var checkBox = document.getElementById(toogleId);
   var text = document.getElementById(containerId);
   if (checkBox.checked == true) {
@@ -199,7 +199,7 @@ function myFunction4(toogleId= 'myCheckBlackhead', containerId='blackHeadContain
     text.style.display = "none";
   }
 }
-function myFunction5(toogleId= 'myCheckMole', containerId = 'moleContainer') {
+function myFunction5(toogleId= "myCheckMole", containerId = "moleContainer") {
   var checkBox = document.getElementById(toogleId);
   var text = document.getElementById(containerId);
   if (checkBox.checked == true) {
