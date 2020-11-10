@@ -88,7 +88,8 @@ function closeFunction() {
   document.getElementById("c-placeholder").style.display = "none";
   document.getElementById("imageShow").src =
     "https://i.ibb.co/P4pwftk/skin.png";
-  document.getElementById("output").src = ""
+  document.getElementById("output").src = "";
+  document.getElementById("inputImage").value = "";
   disableBtn()
 }
 

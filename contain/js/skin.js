@@ -12,6 +12,7 @@ function includeChooseFileListen() {
   fileToRead.addEventListener(
     "change",
     function (event) {
+      console.log('11111')
       document.getElementById("subform").style.display = "flex";
       document.getElementById("cameraForm").style.display = "none";
       var files = fileToRead.files;
