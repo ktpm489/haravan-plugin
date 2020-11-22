@@ -293,6 +293,13 @@ body {
     z-index: 9;
     overflow: scroll;
   }
+  .picture-container {
+    padding:  0px;
+  }
+  .custom {
+    margin : 0px;
+  }
+  
 }
 
 .title-result {
