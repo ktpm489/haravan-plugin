@@ -215,7 +215,8 @@ function uploadImage() {
 }
 
 function processImage(inputData) {
-  var img = document.getElementById("output");
+  // var img = document.getElementById("output");
+  var img = document.getElementById("imageShow");
   // console.log("inputData", inputData.configSkin.email)
   try {
     if (img.src !== null) {
@@ -224,6 +225,7 @@ function processImage(inputData) {
         email: inputData.configSkin.email,
         image_base64: dataInput.substr(dataInput.indexOf("base64,")+7) + "",
       };
+      // alert(jdata.image_base64)
       var xhttp = new XMLHttpRequest();
       xhttp.open(
         "POST",
@@ -245,9 +247,12 @@ function processImage(inputData) {
             renderSkinData(dataJSON);
             openRenderPage();
           } else {
+            // alert('1')
             errorShow();
           }
         } else if (this.status == 400) {
+          // alert('2')
+          // alert(this.responseText)
           errorShow();
           resetFistPageData();
         }
@@ -255,6 +260,7 @@ function processImage(inputData) {
     }
   } catch (e) {
     errorShow();
+    // alert(3);
   }
 }
 
