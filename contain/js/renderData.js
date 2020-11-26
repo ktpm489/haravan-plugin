@@ -113,6 +113,7 @@ function processSpecialResult(dataTransfer) {
   let drawBlackHeadArrDataInput = [];
   let drawAcneArrDataInput = [];
   let drawPimpleArrDataInput = [];
+  // console.log('dataTransfer', dataTransfer)
   for (let i = 0; i < dataTransfer.specialResult.data.length; i++) {
     let itemData = dataTransfer.specialResult.data[i];
     for (let j = 0; j < itemData.data.length; j++) {
@@ -128,10 +129,12 @@ function processSpecialResult(dataTransfer) {
       }
     }
   }
-  drawData(drawBlackHeadArrDataInput, "blackHeadContainer", "pink");
-  drawData(drawSpotArrDataInput, "spotContainer", "orange");
-  drawData(drawPimpleArrDataInput, "pimpleContainer", "green");
-  drawData(drawAcneArrDataInput, "acneContainer", "yellow");
+  let screenWidth = screen.width 
+  let taux = screenWidth > 767 ? 1 : (screenWidth-26)/dataTransfer.image_info.width
+  drawData(drawBlackHeadArrDataInput, "blackHeadContainer", "pink", taux);
+  drawData(drawSpotArrDataInput, "spotContainer", "orange", taux);
+  drawData(drawPimpleArrDataInput, "pimpleContainer", "green", taux);
+  drawData(drawAcneArrDataInput, "acneContainer", "yellow", taux);
 }
 
 function drawData(arr, itemId, color = "red", taux = 1) {
@@ -144,6 +147,8 @@ function drawData(arr, itemId, color = "red", taux = 1) {
 
 function renderDivItem(itemId, data, taux = 1, color = "red") {
   var div = document.createElement("div");
+  // let screenWidth = screen.width 
+  // let taux = screenWidth > 767 ? 1 : (screenWidth-26)/640
   div.style.width = data.width * taux + "px";
   div.style.height = data.height * taux + "px";
   div.style.top = data.top * taux + "px";
