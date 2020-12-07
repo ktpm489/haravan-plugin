@@ -9,7 +9,7 @@ function getConfigSkinAI (functionProcess) {
             if (result) {
                 functionProcess && functionProcess(result)
             } else {
-                errorShow()
+                // errorShow()
             }
             
         } 

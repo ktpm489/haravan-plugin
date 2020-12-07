@@ -253,19 +253,21 @@ function processImage(inputData) {
             openRenderPage();
           } else {
             // alert('1')
-            errorShow();
+            // errorShow();
+            resetFistPageData();
           }
         } else if (this.status == 400) {
           // alert('2')
           // alert(this.responseText)
-          errorShow();
+          // errorShow();
           resetFistPageData();
         }
       };
     }
   } catch (e) {
-    errorShow();
+    // errorShow();
     // alert(3);
+    resetFistPageData();
   }
 }
 
@@ -301,7 +303,8 @@ function resetFistPageData(show= true) {
   document.getElementById("uploadbtn").innerHTML = "Tải lên";
   document.getElementById("imageShow").src =
     "https://i.ibb.co/P4pwftk/skin.png";
-  document.getElementById("output").src = ""
+  document.getElementById("output").src = "";
+  document.getElementById("inputImage").value = "";
   disableBtn()
 }
 
