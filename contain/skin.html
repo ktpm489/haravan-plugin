@@ -53,10 +53,16 @@
       
     }
   </script>
-  <script>
-    includeChooseFileListen();
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+        loadData();
+    });
+    function loadData() {
+      includeChooseFileListen();
     disableBtn();
-  </script>
+    }
+</script>
   <script>
     $(function () {
       $("#c-placeholder").load("https://raw.githack.com/ktpm489/haravan-plugin/demo/contain/result.html");
