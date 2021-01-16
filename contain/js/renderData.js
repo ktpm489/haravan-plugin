@@ -2,7 +2,7 @@ function renderData(itemInput, idParse = "demo", titleDefault = "") {
   var outputs = "";
 
   if (itemInput.title !== undefined) {
-    outputs += "<div class='title-result'>" + itemInput.title.vi + "</div>";
+    outputs += "<div class=" + "title-result" + ">" + itemInput.title.vi + "</div>";
   } else if (titleDefault !== "") {
     outputs += "<div>" + titleDefault + "</div>";
     outputs += "<div>" + "\n" + "</div>";
@@ -41,7 +41,7 @@ function renderData(itemInput, idParse = "demo", titleDefault = "") {
 function renderSpecialData(itemInput, idParse = "demo") {
   var outputs = "";
   if (itemInput.title !== undefined) {
-    outputs += "<div class='title-result'>" + itemInput.title.vi + "</div>";
+    outputs += "<div class=" + "title-result" + ">" + itemInput.title.vi + "</div>";
   }
 
   for (let j = 0; j < itemInput.data.length; j++) {
@@ -88,7 +88,8 @@ function closeFunction() {
   document.getElementById("c-placeholder").style.display = "none";
   document.getElementById("imageShow").src =
     "https://i.ibb.co/P4pwftk/skin.png";
-  document.getElementById('output').src = ''
+  document.getElementById("output").src = "";
+  document.getElementById("inputImage").value = "";
   disableBtn()
 }
 
@@ -112,6 +113,7 @@ function processSpecialResult(dataTransfer) {
   let drawBlackHeadArrDataInput = [];
   let drawAcneArrDataInput = [];
   let drawPimpleArrDataInput = [];
+  // console.log('dataTransfer', dataTransfer)
   for (let i = 0; i < dataTransfer.specialResult.data.length; i++) {
     let itemData = dataTransfer.specialResult.data[i];
     for (let j = 0; j < itemData.data.length; j++) {
@@ -127,10 +129,12 @@ function processSpecialResult(dataTransfer) {
       }
     }
   }
-  drawData(drawBlackHeadArrDataInput, "blackHeadContainer", "pink");
-  drawData(drawSpotArrDataInput, "spotContainer", "orange");
-  drawData(drawPimpleArrDataInput, "pimpleContainer", "green");
-  drawData(drawAcneArrDataInput, "acneContainer", "yellow");
+  let screenWidth = screen.width 
+  let taux = screenWidth > 767 ? 1 : (screenWidth-26)/dataTransfer.image_info.width
+  drawData(drawBlackHeadArrDataInput, "blackHeadContainer", "pink", taux);
+  drawData(drawSpotArrDataInput, "spotContainer", "orange", taux);
+  drawData(drawPimpleArrDataInput, "pimpleContainer", "green", taux);
+  drawData(drawAcneArrDataInput, "acneContainer", "yellow", taux);
 }
 
 function drawData(arr, itemId, color = "red", taux = 1) {
@@ -143,6 +147,8 @@ function drawData(arr, itemId, color = "red", taux = 1) {
 
 function renderDivItem(itemId, data, taux = 1, color = "red") {
   var div = document.createElement("div");
+  // let screenWidth = screen.width 
+  // let taux = screenWidth > 767 ? 1 : (screenWidth-26)/640
   div.style.width = data.width * taux + "px";
   div.style.height = data.height * taux + "px";
   div.style.top = data.top * taux + "px";
@@ -163,21 +169,68 @@ function myFunction(toogleId, containerId) {
     text.style.display = "none";
   }
 }
+function myFunction1(toogleId= "myCheckSpot", containerId="spotContainer") {
+  var checkBox = document.getElementById(toogleId);
+  var text = document.getElementById(containerId);
+  if (checkBox.checked == true) {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+function myFunction2(toogleId = "myCheckAcne", containerId = "acneContainer") {
+  var checkBox = document.getElementById(toogleId);
+  var text = document.getElementById(containerId);
+  if (checkBox.checked == true) {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+function myFunction3(toogleId= "myCheckPimple", containerId = "pimpleContainer") {
+  var checkBox = document.getElementById(toogleId);
+  var text = document.getElementById(containerId);
+  if (checkBox.checked == true) {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+function myFunction4(toogleId= "myCheckBlackhead", containerId="blackHeadContainer") {
+  var checkBox = document.getElementById(toogleId);
+  var text = document.getElementById(containerId);
+  if (checkBox.checked == true) {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+function myFunction5(toogleId= "myCheckMole", containerId = "moleContainer") {
+  var checkBox = document.getElementById(toogleId);
+  var text = document.getElementById(containerId);
+  if (checkBox.checked == true) {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
 
 function uploadImage() {
   getConfigSkinAI(processImage);
 }
 
 function processImage(inputData) {
-  var img = document.getElementById("output");
-  // console.log('inputData', inputData.configSkin.email)
+  // var img = document.getElementById("output");
+  var img = document.getElementById("imageShow");
+  // console.log("inputData", inputData.configSkin.email)
   try {
     if (img.src !== null) {
       let dataInput = img.src
       let jdata = {
         email: inputData.configSkin.email,
-        image_base64: dataInput.substr(dataInput.indexOf("base64,")+7) + '',
+        image_base64: dataInput.substr(dataInput.indexOf("base64,")+7) + "",
       };
+      // alert(jdata.image_base64)
       var xhttp = new XMLHttpRequest();
       xhttp.open(
         "POST",
@@ -199,16 +252,22 @@ function processImage(inputData) {
             renderSkinData(dataJSON);
             openRenderPage();
           } else {
-            errorShow();
+            // alert('1')
+            // errorShow();
+            resetFistPageData();
           }
         } else if (this.status == 400) {
-          errorShow();
+          // alert('2')
+          // alert(this.responseText)
+          // errorShow();
           resetFistPageData();
         }
       };
     }
   } catch (e) {
-    errorShow();
+    // errorShow();
+    // alert(3);
+    resetFistPageData();
   }
 }
 
@@ -237,14 +296,15 @@ function openRenderPage() {
 }
 
 function resetFistPageData(show= true) {
-  document.getElementById("myForm").style.display = show ?  "block" : 'none';
+  document.getElementById("myForm").style.display = show ?  "block" : "none";
   document.getElementById("subform").style.display = "flex";
   document.getElementById("pictuer-id").style.display = "flex";
   document.getElementById("c-placeholder").style.display = "none";
   document.getElementById("uploadbtn").innerHTML = "Tải lên";
   document.getElementById("imageShow").src =
     "https://i.ibb.co/P4pwftk/skin.png";
-  document.getElementById('output').src = ''
+  document.getElementById("output").src = "";
+  document.getElementById("inputImage").value = "";
   disableBtn()
 }
 

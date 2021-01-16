@@ -1,5 +1,4 @@
 <html>
-
 <body>
   <a href="#" class="close" onclick="closeFunction()"></a>
   <h1 class="txt-header">Kết quả của bạn</h1>
@@ -14,23 +13,23 @@
   <div class="checkContainer">
     <div>
       <label for="myCheckSpot">Đốm tàn nhan:</label> 
-      <input type="checkbox" id="myCheckSpot" onclick="myFunction('myCheckSpot', 'spotContainer')">
+      <input type="checkbox" id="myCheckSpot" onclick="myFunction1()">
     </div>
     <div>
       <label for="myCheckAcne">Mụn:</label> 
-      <input type="checkbox" id="myCheckAcne" onclick="myFunction('myCheckAcne','acneContainer')">
+      <input type="checkbox" id="myCheckAcne" onclick="myFunction2()">
     </div>
     <div>
       <label for="myCheckPimple">Mụn nhọt:</label> 
-      <input type="checkbox" id="myCheckPimple" onclick="myFunction('myCheckPimple','pimpleContainer')">
+      <input type="checkbox" id="myCheckPimple" onclick="myFunction3()">
     </div>
     <div>
       <label for="myCheckBlackhead">Mụn đầu đen:</label> 
-      <input type="checkbox" id="myCheckBlackhead" onclick="myFunction('myCheckBlackhead','blackHeadContainer')">
+      <input type="checkbox" id="myCheckBlackhead" onclick="myFunction4()">
     </div>
     <div>
       <label for="myCheckMole">Nốt ruồi:</label> 
-      <input type="checkbox" id="myCheckMole" onclick="myFunction('myCheckMole','moleContainer')">
+      <input type="checkbox" id="myCheckMole" onclick="myFunction5()">
     </div>
   </div>
   <p id="generalResult"></p>
@@ -38,11 +37,17 @@
   <p id="generalConclusion"></p>
   <p id="specialConclusion"></p>
 
-<script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ktpm489/admin-demo/config2.js"></script>
-<script type="text/javascript" src="./js/renderData.js"></script>
-<script>
-  disableBtn(); 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://raw.githack.com/ktpm489/haravan-plugin/demo/contain/js/renderData.js"></script>
+<script type="text/javascript">
+
+  $(document).ready(function () {
+      loadResultData();
+  });
+  function loadResultData() {
+    disableBtn(); 
+  }
 </script>
+
 </body> 
 </html>

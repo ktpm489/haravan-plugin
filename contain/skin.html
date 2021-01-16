@@ -3,23 +3,23 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="text/javascript" src="./js/skin.js"></script>
-  <script type="text/javascript" src="./js/renderData.js"></script>
-  <script type="text/javascript" src="./js/configskin.js"></script>
-  <script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
-  <link rel="stylesheet" href="./css/index.css">
+  <script type="text/javascript" src="https://raw.githack.com/ktpm489/haravan-plugin/demo/contain/js/skin.js"></script>
+  <script type="text/javascript" src="https://raw.githack.com/ktpm489/haravan-plugin/demo/contain/js/renderData.js"></script>
+  <script type="text/javascript" src="https://raw.githack.com/ktpm489/haravan-plugin/demo/contain/js/configskin.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://raw.githack.com/ktpm489/haravan-plugin/demo/contain/css/index.css">
 </head>
 
 <body>
   <button class="open-button" onclick="openForm()">Phân tích vấn đề da mặt</button>
 
   <div class="form-popup" id="myForm">
-    <div class='picture-container' id="pictuer-id">
+    <div class="picture-container" id="pictuer-id">
     <p class="file">
       <input type="file" name="file" id="inputImage" />
       <label for="inputImage">Chọn ảnh</label>
     </p>
-      <button type="button" class="btn cancel custom" onclick="dislayCamera()">Chụp Ảnh</button>
+      <button type="button" class="btn cancel custom" onclick="dislayCamera()" id="cameraBtn">Chụp Ảnh</button>
     </div>
     <div class="contentarea" id="cameraForm">
       <div class="camera">
@@ -28,7 +28,7 @@
       <div><button id="startbutton">Chụp</button></div>
       <canvas id="canvas"></canvas>
     </div>
-    <form action="/" class="form-container" id='subform'>
+    <form action="/" class="form-container" id="subform">
       <img src="https://i.ibb.co/P4pwftk/skin.png" alt="W3Schools.com" id="imageShow">
       <img src="" id="output">
       <button type="button" class="btn upload" onclick="openResult()" id="uploadbtn">Tải lên</button>
@@ -53,14 +53,29 @@
       
     }
   </script>
-  <script>
-    includeChooseFileListen();
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+        loadData();
+    });
+    function loadData() {
+      includeChooseFileListen();
     disableBtn();
-  </script>
+    }
+</script>
   <script>
     $(function () {
-      $("#c-placeholder").load("result.html");
+      $("#c-placeholder").load("https://raw.githack.com/ktpm489/haravan-plugin/demo/contain/result.html");
     });
+
+    $(function () {
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        document.getElementById("cameraBtn").style.display = "none";
+    } else {
+      // console.log("fff")
+    }
+    });
+
   </script>
 
 </body>

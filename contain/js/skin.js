@@ -12,6 +12,7 @@ function includeChooseFileListen() {
   fileToRead.addEventListener(
     "change",
     function (event) {
+      console.log('11111')
       document.getElementById("subform").style.display = "flex";
       document.getElementById("cameraForm").style.display = "none";
       var files = fileToRead.files;
@@ -123,7 +124,7 @@ function takepicture() {
 }
 
 function videoOff() {
-  // A video's MediaStream object is available through its srcObject attribute
+  // A video"s MediaStream object is available through its srcObject attribute
   video = document.getElementById("video");
   const mediaStream = video.srcObject;
   // Through the MediaStream, you can get the MediaStreamTracks with getTracks():
@@ -171,7 +172,7 @@ function resizeImage(fileInput) {
               var ctx = canvas.getContext("2d");
               ctx.drawImage(img, 0, 0, 500, 500);
               dataurl = canvas.toDataURL(file.type);
-              document.getElementById('output').src = dataurl;
+              document.getElementById("output").src = dataurl;
           }
           reader.readAsDataURL(file);
 
@@ -190,7 +191,7 @@ image.onload = function(e) {
         0, 0, image.width, image.height, 
         0, 0, canvas.width, canvas.height
     );
-    document.getElementById('output').src = canvas.toDataURL();
+    document.getElementById("output").src = canvas.toDataURL();
 };
 image.src = data;
 }
