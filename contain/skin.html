@@ -52,7 +52,15 @@
   </script>
   <script type="text/javascript">
 
-   
+    function enableBtn() {
+      document.getElementById("uploadbtn").disabled = false;
+      document.getElementById("uploadbtn").style.opacity = 1;
+    }
+
+    function disableBtn() {
+      document.getElementById("uploadbtn").disabled = true;
+      document.getElementById("uploadbtn").style.opacity = 0.5;
+    }
 
     function includeChooseFileListen() {
       var fileToRead = document.getElementById("inputImage");
@@ -77,18 +85,6 @@
         false
       );
     }
-
-
-    function enableBtn() {
-      document.getElementById("uploadbtn").disabled = false;
-      document.getElementById("uploadbtn").style.opacity = 1;
-    }
-
-    function disableBtn() {
-      document.getElementById("uploadbtn").disabled = true;
-      document.getElementById("uploadbtn").style.opacity = 0.5;
-    }
-
     function resizeImage(fileInput) {
       var file = fileInput;
       if (file) {
@@ -131,8 +127,7 @@
       }
     }
 
-    includeChooseFileListen();
-    disableBtn();
+    
     
 </script>
   <script>
@@ -146,6 +141,11 @@
     } else {
       // console.log("fff")
     }
+    });
+
+    $(function () {
+      includeChooseFileListen();
+       disableBtn();
     });
 
   </script>
