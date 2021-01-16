@@ -275,53 +275,7 @@
 
 </script>
 <script>
-
   function myFunction(toogleId, containerId) {
-    var checkBox = document.getElementById(toogleId);
-    var text = document.getElementById(containerId);
-    if (checkBox.checked == true) {
-      text.style.display = "block";
-    } else {
-      text.style.display = "none";
-    }
-  }
-  function myFunction1(toogleId = "myCheckSpot", containerId = "spotContainer") {
-    var checkBox = document.getElementById(toogleId);
-    var text = document.getElementById(containerId);
-    if (checkBox.checked == true) {
-      text.style.display = "block";
-    } else {
-      text.style.display = "none";
-    }
-  }
-  function myFunction2(toogleId = "myCheckAcne", containerId = "acneContainer") {
-    var checkBox = document.getElementById(toogleId);
-    var text = document.getElementById(containerId);
-    if (checkBox.checked == true) {
-      text.style.display = "block";
-    } else {
-      text.style.display = "none";
-    }
-  }
-  function myFunction3(toogleId = "myCheckPimple", containerId = "pimpleContainer") {
-    var checkBox = document.getElementById(toogleId);
-    var text = document.getElementById(containerId);
-    if (checkBox.checked == true) {
-      text.style.display = "block";
-    } else {
-      text.style.display = "none";
-    }
-  }
-  function myFunction4(toogleId = "myCheckBlackhead", containerId = "blackHeadContainer") {
-    var checkBox = document.getElementById(toogleId);
-    var text = document.getElementById(containerId);
-    if (checkBox.checked == true) {
-      text.style.display = "block";
-    } else {
-      text.style.display = "none";
-    }
-  }
-  function myFunction5(toogleId = "myCheckMole", containerId = "moleContainer") {
     var checkBox = document.getElementById(toogleId);
     var text = document.getElementById(containerId);
     if (checkBox.checked == true) {
@@ -425,19 +379,85 @@
 <script>
  
   
- 
-
+ var width = 320; // We will scale the photo width to this
+  var height = 0; // This will be computed based on the input stream
+  var streaming = false;
+  var video = null;
+  var canvas = null;
+  var photo = null;
+  var startbutton = null;
+  var localstream = null;
   
   function clearphoto() {
+    try {
     var context = canvas.getContext("2d");
     context.fillStyle = "#AAA";
     context.fillRect(0, 0, canvas.width, canvas.height);
-
     var data = canvas.toDataURL("image/png");
+    photo = document.getElementById("imageShow");
     photo.setAttribute("src", data);
+    } catch(e) {
+
+    }
+   
   }
 
   
+  function startup() {
+  
+  video = document.getElementById("video");
+  canvas = document.getElementById("canvas");
+  photo = document.getElementById("imageShow");
+  startbutton = document.getElementById("startbutton");
+
+  navigator.mediaDevices
+    .getUserMedia({
+      video: true,
+      audio: false,
+    })
+    .then(function (stream) {
+      video.srcObject = stream;
+      localstream = stream;
+      video.play();
+    })
+    .catch(function (err) {
+      console.log("An error occurred: " + err);
+    });
+
+  video.addEventListener(
+    "canplay",
+    function (ev) {
+      if (!streaming) {
+        height = video.videoHeight / (video.videoWidth / width);
+
+        if (isNaN(height)) {
+          height = width / (4 / 3);
+        }
+
+        video.setAttribute("width", width);
+        video.setAttribute("height", height);
+        canvas.setAttribute("width", width);
+        canvas.setAttribute("height", height);
+        streaming = true;
+      }
+    },
+    false
+  );
+
+  console.log('width', width, height, canvas)
+  startbutton.addEventListener(
+    "click",
+    function (ev) {
+      // console.log('width', width, height, canvas)
+      takepicture();
+      ev.preventDefault();
+    },
+    false
+  );
+
+  clearphoto();
+}
+ 
 
   function videoOff() {
     // A video"s MediaStream object is available through its srcObject attribute
@@ -479,66 +499,9 @@
     }, 1500);
   }
 
+  
 
-  function startup() {
-  var width = 320; // We will scale the photo width to this
-  var height = 0; // This will be computed based on the input stream
-  var streaming = false;
-  var video = null;
-  var canvas = null;
-  var photo = null;
-  var startbutton = null;
-  var localstream = null;
-    video = document.getElementById("video");
-    canvas = document.getElementById("canvas");
-    photo = document.getElementById("imageShow");
-    startbutton = document.getElementById("startbutton");
-
-    navigator.mediaDevices
-      .getUserMedia({
-        video: true,
-        audio: false,
-      })
-      .then(function (stream) {
-        video.srcObject = stream;
-        localstream = stream;
-        video.play();
-      })
-      .catch(function (err) {
-        console.log("An error occurred: " + err);
-      });
-
-    video.addEventListener(
-      "canplay",
-      function (ev) {
-        if (!streaming) {
-          height = video.videoHeight / (video.videoWidth / width);
-
-          if (isNaN(height)) {
-            height = width / (4 / 3);
-          }
-
-          video.setAttribute("width", width);
-          video.setAttribute("height", height);
-          canvas.setAttribute("width", width);
-          canvas.setAttribute("height", height);
-          streaming = true;
-        }
-      },
-      false
-    );
-
-    startbutton.addEventListener(
-      "click",
-      function (ev) {
-        takepicture();
-        ev.preventDefault();
-      },
-      false
-    );
-
-    clearphoto();
-  }
+  
 
   function resizeImage(fileInput) {
     var file = fileInput;
@@ -551,7 +514,7 @@
         var img = document.createElement("img");
         img.src = e.target.result;
 
-        var canvas = document.createElement("canvas");
+        canvas = document.createElement("canvas");
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 0, 0);
 
@@ -669,7 +632,7 @@
   <script>
     $(function () {
       $("#c-placeholder").load("https://raw.githack.com/ktpm489/haravan-plugin/demoV8/contain/result.html");
-      // $("#c-placeholder").load("https://raw.githack.com/ktpm489/haravan-plugin/demoV8/contain/result.html");
+      // $("#c-placeholder").load("./contain/result.html");
     });
 
     $(function () {
